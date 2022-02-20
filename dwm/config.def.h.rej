@@ -1,0 +1,11 @@
+--- config.def.h	Sun Jul 08 09:45:53 2012 +0200
++++ config.def.h	Sat Aug 18 13:28:31 2012 +0200
+@@ -10,6 +10,8 @@
+ static const char selfgcolor[]      = "#eeeeee";
+ static const unsigned int borderpx  = 1;        /* border pixel of windows */
+ static const unsigned int snap      = 32;       /* snap pixel */
++static const unsigned int systrayspacing = 2;   /* systray spacing */
++static const Bool showsystray       = True;     /* False means no systray */
+ static const Bool showbar           = True;     /* False means no bar */
+ static const Bool topbar            = True;     /* False means bottom bar */
+ 
