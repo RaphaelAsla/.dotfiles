@@ -10,7 +10,7 @@ vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<C
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
   -- Enable completion triggered by <c-x><c-o>
-      vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
+    vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 
 	  -- Mappings.
 	  -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -64,16 +64,21 @@ require'lspconfig'.sumneko_lua.setup {
     }
 }
 
-
 -- Use a loop to conveniently call 'setup' on multiple servers and
 -- map buffer local keybindings when the language server attaches
-local servers = { 'pyright', 'clangd' }
+local servers = { 'pyright', 'clangd', 'tsserver' }
 for _, lsp in pairs(servers) do
   require('lspconfig')[lsp].setup {
     on_attach = on_attach,
     flags = {
 		allow_incremental_sync = false,
-      debounce_text_changes = 150,
+        debounce_text_changes = 500,
     }
   }
 end
+
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+    vim.lsp.diagnostic.on_publish_diagnostics, {
+        update_in_insert = false,
+  }
+)

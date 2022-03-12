@@ -43,7 +43,7 @@ oo.statusline = "<< %f >>%= %m %Y %c %l/%L"
 o.termguicolors = true
 
 c("filetype plugin indent on")
-c("colorscheme onedark")
+c("colorscheme moonfly")
 
 o.shortmess = o.shortmess
   + {
@@ -56,6 +56,7 @@ o.shortmess = o.shortmess
 
 vim.api.nvim_command[[
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-command! W execute 'w !sudo tee % > /dev/null' <bar> edit!
 au FocusGained,BufEnter * checktime
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
 ]]

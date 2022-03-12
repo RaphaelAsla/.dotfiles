@@ -9,14 +9,12 @@ local cmp = require'cmp'
     },
     mapping = {
       ["<tab>"] = cmp.mapping.select_next_item(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
     },
 
     sources = cmp.config.sources({
-         { name = 'nvim_lsp', max_item_count = 8 },
-         { name = 'luasnip', max_item_count = 8 }, -- For luasnip users.
-    }, {
-      { name = 'buffer', max_item_count = 1  },
+         { name = 'nvim_lsp', max_item_count = 10 },
+         { name = 'luasnip', max_item_count = 4 }, -- For luasnip users.
+         { name = 'buffer', max_item_count = 4  },
     })
 
   })

@@ -11,22 +11,35 @@ vnoremap $e <esc>`>a`<esc>`<i`<esc>
 xnoremap <expr> p 'pgv"'.v:register.'y`>'
 xnoremap <expr> P 'Pgv"'.v:register.'y`>'
 
-map <space> /
 map <C-space> ?
 map <silent> <leader><cr> :noh<cr>
 
 map 0 ^
 
-" Close current buffer
-map <leader>bd :Bclose<cr>
-
-" Close all buffers
-map <leader>ba :1,1000 bd!<cr>
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
 map <leader>tm :tabmove 
+
+" Go to tab by number
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
+
+" Move line
+nnoremap <leader>j :m .+1<CR>==
+nnoremap <leader>k :m .-2<CR>==
+vnoremap <leader>j :m '>+1<CR>gv=gv
+vnoremap <leader>k :m '<-2<CR>gv=gv
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
@@ -38,13 +51,14 @@ map <F5> :call CompileRun()<CR>
 imap <F5> <Esc>:call CompileRun()<CR>
 vmap <F5> <Esc>:call CompileRun()<CR>
 
+
 func! CompileRun()
 exec "w"
 if &filetype == 'c'
-    exec "!gcc % -o %<"
+    exec "!clang -Wall % -o %<"
     exec "!./%<"
 elseif &filetype == 'cpp'
-    exec "!g++ % -o %<"
+    exec "!clang++ -std=c++20 -Wall % -o %<"
     exec "!./%<"
 elseif &filetype == 'java'
     exec "!javac %"
@@ -60,6 +74,8 @@ elseif &filetype == 'go'
     exec "!go run %"
 elseif &filetype == 'matlab'
     exec "!octave %"
+elseif &filetype == 'javascript'
+	exec "!node %"
 endif
 endfunc
 ]], false)
