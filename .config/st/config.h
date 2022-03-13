@@ -6,9 +6,7 @@
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
 static char *font = "JetBrains Mono:pixelsize=16:antialias=true:autohint=true";
-/* Spare fonts */
 static char *font2[] = {"JoyPixels"};
-
 static int borderpx = 2;
 
 /*
@@ -86,20 +84,16 @@ char *termname = "st-256color";
  * the st.info and appropriately install the st.info in the environment where
  * you use this st version.
  *
- *  it#$tabspaces,
+ *	it#$tabspaces,
  *
  * Secondly make sure your kernel is not expanding tabs. When running `stty
  * -a` »tab0« should appear. You can tell the terminal to not expand tabs by
  *  running following command:
  *
- *  stty tabs
+ *	stty tabs
  */
 unsigned int tabspaces = 8;
 
-/* bg opacity */
-float alpha = 1;
-
-/* Terminal colors (16 first used in escape sequence) */
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
     /* 8 normal colors */
@@ -182,8 +176,6 @@ static uint forcemousemod = ShiftMask;
  */
 static MouseShortcut mshortcuts[] = {
     /* mask                 button   function        argument       release */
-    {ShiftMask, Button4, kscrollup, {.i = 1}},
-    {ShiftMask, Button5, kscrolldown, {.i = 1}},
     {XK_ANY_MOD, Button2, selpaste, {.i = 0}, 1},
     {ShiftMask, Button4, ttysend, {.s = "\033[5;2~"}},
     {XK_ANY_MOD, Button4, ttysend, {.s = "\031"}},
@@ -197,8 +189,6 @@ static MouseShortcut mshortcuts[] = {
 
 static Shortcut shortcuts[] = {
     /* mask                 keysym          function        argument */
-    {ShiftMask, Button4, kscrollup, {.i = 1}},
-    {ShiftMask, Button5, kscrolldown, {.i = 1}},
     {XK_ANY_MOD, XK_Break, sendbreak, {.i = 0}},
     {ControlMask, XK_Print, toggleprinter, {.i = 0}},
     {ShiftMask, XK_Print, printscreen, {.i = 0}},
@@ -211,8 +201,6 @@ static Shortcut shortcuts[] = {
     {TERMMOD, XK_Y, selpaste, {.i = 0}},
     {ShiftMask, XK_Insert, selpaste, {.i = 0}},
     {TERMMOD, XK_Num_Lock, numlock, {.i = 0}},
-    {ShiftMask, XK_Page_Up, kscrollup, {.i = -1}},
-    {ShiftMask, XK_Page_Down, kscrolldown, {.i = -1}},
 };
 
 /*
