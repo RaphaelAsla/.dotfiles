@@ -1,3 +1,3 @@
 require('plugins.cmp')
 require('plugins.lsp')
-require('plugins.feline')
+require('plugins.lualine')

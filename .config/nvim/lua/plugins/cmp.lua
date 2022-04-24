@@ -8,7 +8,9 @@ local cmp = require'cmp'
       end,
     },
     mapping = {
+	  ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
       ["<tab>"] = cmp.mapping.select_next_item(),
+      ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
 
     sources = cmp.config.sources({
