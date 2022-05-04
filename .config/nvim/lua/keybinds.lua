@@ -18,6 +18,9 @@ map 0 ^
 
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>

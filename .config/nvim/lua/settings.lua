@@ -28,7 +28,7 @@ o.autoread = true
 o.history = 500
 o.undofile = true
 o.undodir = vim.fn.stdpath('cache') .. '/NvimUndofile'
-
+oo.guicursor='i-r-cr-ci:hor40'
 
 o.tabstop = 4
 o.softtabstop = 4
@@ -39,7 +39,6 @@ o.backup = false
 o.writebackup = false
 o.swapfile = false
 
-oo.statusline = "<< %f >>%= %m %Y %c %l/%L"
 o.termguicolors = true
 
 c("filetype plugin indent on")
