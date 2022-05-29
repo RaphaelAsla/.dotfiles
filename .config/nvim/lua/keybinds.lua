@@ -58,10 +58,10 @@ vmap <F5> <Esc>:call CompileRun()<CR>
 func! CompileRun()
 exec "w"
 if &filetype == 'c'
-    exec "!clang -Wall % -o %<"
+    exec "!gcc -Wall % -o %<"
     exec "!./%<"
 elseif &filetype == 'cpp'
-    exec "!clang++ -std=c++20 -Wall % -o %<"
+    exec "!g++ -std=c++20 -Wall % -o %<"
     exec "!./%<"
 elseif &filetype == 'java'
     exec "!javac %"
