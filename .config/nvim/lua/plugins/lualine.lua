@@ -2,7 +2,7 @@ local line = require("lualine")
 
 line.setup({
   options = {
-    theme = "gruvbox",
+    theme = "moonfly",
     disabled_filetypes = { "dashboard", "startify", "NvimTree", "packer" },
   },
   sections = {

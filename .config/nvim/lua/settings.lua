@@ -42,7 +42,7 @@ o.swapfile = false
 o.termguicolors = true
 
 c("filetype plugin indent on")
-c("colorscheme gruvbox")
+c("colorscheme moonfly")
 
 o.shortmess = o.shortmess
   + {
