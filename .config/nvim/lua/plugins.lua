@@ -34,4 +34,6 @@ return require('packer').startup(function()
 
   use 'nvim-treesitter/nvim-treesitter'
 
+  use 'morhetz/gruvbox'
+
 end)
