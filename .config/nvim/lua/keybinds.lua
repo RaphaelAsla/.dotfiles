@@ -1,6 +1,7 @@
 vim.api.nvim_exec([[
 inoremap jj <ESC>
 
+" surround words in brackets
 vnoremap $1 <esc>`>a)<esc>`<i(<esc>
 vnoremap $2 <esc>`>a]<esc>`<i[<esc>
 vnoremap $3 <esc>`>a}<esc>`<i{<esc>
@@ -8,19 +9,34 @@ vnoremap $$ <esc>`>a"<esc>`<i"<esc>
 vnoremap $q <esc>`>a'<esc>`<i'<esc>
 vnoremap $e <esc>`>a`<esc>`<i`<esc>
 
+" copy paste stuff
 xnoremap <expr> p 'pgv"'.v:register.'y`>'
 xnoremap <expr> P 'Pgv"'.v:register.'y`>'
 
+" un-highlight text
 map <C-space> ?
 map <silent> <leader><cr> :noh<cr>
 
+" i don't remember
 map 0 ^
 
+" write without sudo
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
+" open close brackets
+" inoremap " ""<left>
+" inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+inoremap [ []<left>
+inoremap <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
+inoremap { {}<left>
+inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
+
+" tabs
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
@@ -48,6 +64,8 @@ vnoremap <leader>k :m '<-2<CR>gv=gv
 " Super useful when editing files in the same directory
 map <leader>te :tabedit <C-r>=expand("%:p:h")<cr>/
 
+
+" get current dir
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 map <F5> :call CompileRun()<CR>

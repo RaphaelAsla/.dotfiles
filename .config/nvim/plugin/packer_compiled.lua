@@ -94,20 +94,10 @@ _G.packer_plugins = {
     path = "/home/reavey/.local/share/nvim/site/pack/packer/start/cmp-path",
     url = "https://github.com/hrsh7th/cmp-path"
   },
-  ["cmp-snippy"] = {
-    loaded = true,
-    path = "/home/reavey/.local/share/nvim/site/pack/packer/start/cmp-snippy",
-    url = "https://github.com/dcampos/cmp-snippy"
-  },
   cmp_luasnip = {
     loaded = true,
     path = "/home/reavey/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
-  },
-  gruvbox = {
-    loaded = true,
-    path = "/home/reavey/.local/share/nvim/site/pack/packer/start/gruvbox",
-    url = "https://github.com/morhetz/gruvbox"
   },
   ["lsp-status.nvim"] = {
     loaded = true,
@@ -129,11 +119,6 @@ _G.packer_plugins = {
     path = "/home/reavey/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
     url = "https://github.com/neovim/nvim-lspconfig"
   },
-  ["nvim-snippy"] = {
-    loaded = true,
-    path = "/home/reavey/.local/share/nvim/site/pack/packer/start/nvim-snippy",
-    url = "https://github.com/dcampos/nvim-snippy"
-  },
   ["nvim-treesitter"] = {
     loaded = true,
     path = "/home/reavey/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
@@ -143,6 +128,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/reavey/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
+  },
+  ["vim-code-dark"] = {
+    loaded = true,
+    path = "/home/reavey/.local/share/nvim/site/pack/packer/start/vim-code-dark",
+    url = "https://github.com/tomasiser/vim-code-dark"
   },
   ["vim-fugitive"] = {
     loaded = true,
