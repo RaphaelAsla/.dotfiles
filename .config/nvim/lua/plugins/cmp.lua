@@ -18,6 +18,7 @@ local cmp = require'cmp'
       ['<C-j>'] = cmp.mapping.scroll_docs(4),
 	  ['<C-e>'] = cmp.mapping.abort(),
       ["<tab>"] = cmp.mapping.select_next_item(),
+      ["<S-tab>"] = cmp.mapping.select_prev_item(),
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
 
