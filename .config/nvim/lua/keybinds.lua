@@ -13,6 +13,9 @@ vnoremap $e <esc>`>a`<esc>`<i`<esc>
 xnoremap <expr> p 'pgv"'.v:register.'y`>'
 xnoremap <expr> P 'Pgv"'.v:register.'y`>'
 
+" delete without copying
+vnoremap d "_d
+
 " un-highlight text
 map <C-space> ?
 map <silent> <leader><cr> :noh<cr>

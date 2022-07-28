@@ -42,7 +42,7 @@ o.swapfile = false
 o.termguicolors = true
 
 c("filetype plugin indent on")
-c("colorscheme codedark")
+c("colorscheme tokyonight")
 
 o.shortmess = o.shortmess
   + {
@@ -56,6 +56,4 @@ o.shortmess = o.shortmess
 vim.api.nvim_command[[
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 au FocusGained,BufEnter * checktime
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_nr_show = 1
 ]]
