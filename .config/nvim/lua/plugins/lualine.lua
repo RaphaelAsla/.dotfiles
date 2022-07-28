@@ -2,7 +2,7 @@ local line = require("lualine")
 
 line.setup({
   options = {
-    theme = "codedark",
+    theme = "tokyonight",
     disabled_filetypes = { "dashboard", "startify", "NvimTree", "packer" },
   },
   sections = {

@@ -129,10 +129,10 @@ _G.packer_plugins = {
     path = "/home/reavey/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
-  ["vim-code-dark"] = {
+  ["tokyonight.nvim"] = {
     loaded = true,
-    path = "/home/reavey/.local/share/nvim/site/pack/packer/start/vim-code-dark",
-    url = "https://github.com/tomasiser/vim-code-dark"
+    path = "/home/reavey/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
+    url = "https://github.com/folke/tokyonight.nvim"
   },
   ["vim-fugitive"] = {
     loaded = true,

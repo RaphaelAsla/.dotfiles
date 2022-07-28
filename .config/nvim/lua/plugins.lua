@@ -30,6 +30,6 @@ return require('packer').startup(function()
 
   use 'bluz71/vim-moonfly-colors'
 
-  use 'tomasiser/vim-code-dark'
+  use 'folke/tokyonight.nvim'
 
 end)
