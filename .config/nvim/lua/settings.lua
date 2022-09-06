@@ -3,10 +3,13 @@ local g = vim.g
 local c = vim.cmd
 local oo = vim.o
 
+--vim.lsp.set_log_level("debug")
+
 c("syntax on")
 g.mapleader = ","
 
 o.mouse = "a"
+o.signcolumn = "yes:1"
 o.cmdheight = 1
 o.updatetime = 500
 o.completeopt:append('menuone,noinsert,noselect')
@@ -28,6 +31,7 @@ o.autoread = true
 o.history = 500
 o.undofile = true
 o.undodir = vim.fn.stdpath('cache') .. '/NvimUndofile'
+o.splitright = true
 oo.guicursor='i-r-cr-ci:hor40'
 
 o.tabstop = 4

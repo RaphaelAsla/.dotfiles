@@ -8,11 +8,6 @@ local cmp = require'cmp'
       end,
     },
 
-    window = {
-       completion = cmp.config.window.bordered(),
-       documentation = cmp.config.window.bordered(),
-    },
-
     mapping = {
       ['<C-k>'] = cmp.mapping.scroll_docs(-4),
       ['<C-j>'] = cmp.mapping.scroll_docs(4),
@@ -22,13 +17,11 @@ local cmp = require'cmp'
       ['<CR>'] = cmp.mapping.confirm({ select = true }),
     },
 
-    sources = cmp.config.sources({
-         { name = 'nvim_lsp', max_item_count = 10 },
-         { name = 'luasnip' },
-         { name = 'buffer', max_item_count = 4  },
-    })
-
-  })
+	sources = cmp.config.sources({
+		{ name = 'nvim_lsp', max_item_count = 15},
+		{ name = 'buffer'},
+	})
+})
 
   -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline('/', {

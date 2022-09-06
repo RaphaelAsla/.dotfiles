@@ -14,7 +14,7 @@ xnoremap <expr> p 'pgv"'.v:register.'y`>'
 xnoremap <expr> P 'Pgv"'.v:register.'y`>'
 
 " delete without copying
-vnoremap d "_d
+vnoremap <leader>d "_d
 
 " un-highlight text
 map <C-space> ?
@@ -38,6 +38,13 @@ inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Fast editing and reloading of vimrc configs
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <leader>e :tabedit! ~/.config/nvim/lua<cr>
+
+" open nvim-tree
+map <leader><TAB> :NvimTreeToggle<cr>
 
 " tabs
 map <leader>tn :tabnew<cr>
@@ -67,7 +74,6 @@ vnoremap <leader>k :m '<-2<CR>gv=gv
 " Super useful when editing files in the same directory
 map <leader>te :tabedit <C-r>=expand("%:p:h")<cr>/
 
-
 " get current dir
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
@@ -75,14 +81,13 @@ map <F5> :call CompileRun()<CR>
 imap <F5> <Esc>:call CompileRun()<CR>
 vmap <F5> <Esc>:call CompileRun()<CR>
 
-
 func! CompileRun()
 exec "w"
 if &filetype == 'c'
-    exec "!gcc -Wall % -o %<"
+    exec "!clang -Wall % -o %<"
     exec "!./%<"
 elseif &filetype == 'cpp'
-    exec "!g++ -std=c++20 -Wall % -o %<"
+    exec "!clang++ -std=c++20 -Wall % -o %<"
     exec "!./%<"
 elseif &filetype == 'java'
     exec "!javac %"
