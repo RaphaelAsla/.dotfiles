@@ -26,10 +26,10 @@ return require('packer').startup(function()
 
   use 'tpope/vim-fugitive'
 
-  use 'nvim-treesitter/nvim-treesitter'
-
-  use 'bluz71/vim-moonfly-colors'
-
   use 'folke/tokyonight.nvim'
+
+  use { 'kyazdani42/nvim-tree.lua',
+	  requires = { 'kyazdani42/nvim-web-devicons', -- optional, for file icons 
+  },}
 
 end)
