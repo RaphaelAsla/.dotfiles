@@ -14,12 +14,12 @@ local cmp = require'cmp'
 	  ['<C-e>'] = cmp.mapping.abort(),
       ["<tab>"] = cmp.mapping.select_next_item(),
       ["<S-tab>"] = cmp.mapping.select_prev_item(),
-      ['<CR>'] = cmp.mapping.confirm({ select = true }),
+      ['<CR>'] = cmp.mapping.confirm({ select = false }),
     },
 
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp', max_item_count = 15},
-		{ name = 'buffer'},
+		{ name = 'buffer', max_item_count = 3},
 	})
 })
 
