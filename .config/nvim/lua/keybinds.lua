@@ -27,14 +27,12 @@ map 0 ^
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 " open close brackets
-" inoremap " ""<left>
-" inoremap ' ''<left>
-inoremap ( ()<left>
-inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
-inoremap [ []<left>
-inoremap <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
-inoremap { {}<left>
-inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
+"inoremap ( ()<left>
+"inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+"inoremap [ []<left>
+"inoremap <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
+"inoremap { {}<left>
+"inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
@@ -81,6 +79,16 @@ map <F5> :call CompileRun()<CR>
 imap <F5> <Esc>:call CompileRun()<CR>
 vmap <F5> <Esc>:call CompileRun()<CR>
 
+map <F6> :call BuildRun()<CR>
+imap <F6> <Esc>:call BuildRun()<CR>
+vmap <F6> <Esc>:call BuildRun()<CR>
+
+func! BuildRun()
+exec "w"
+exec "!cd ../tbuild && ninja"
+exec "!../tbuild/./$(grep \"add_executable\" ../CMakeLists.txt | sed 's/.*(\\(.*\\))/\\1/')"
+endfunc
+
 func! CompileRun()
 exec "w"
 if &filetype == 'c'
@@ -105,6 +113,10 @@ elseif &filetype == 'matlab'
     exec "!octave %"
 elseif &filetype == 'javascript'
 	exec "!node %"
+elseif &filetype == 'asm'
+	exec "!nasm -f bin % -o %<.bin"
+	exec "!xxd %<.bin"
+	exec "!qemu-system-x86_64 -drive format=raw,file=%<.bin"
 endif
 endfunc
 ]], false)
