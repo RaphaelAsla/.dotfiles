@@ -299,30 +299,6 @@ static Window root, wmcheckwin;
 /* configuration, allows nested code to access above variables */
 #include "config.h"
 
-struct Monitor {
-  char ltsymbol[16];
-  float mfact;
-  int num;
-  int by;             /* bar geometry */
-  int mx, my, mw, mh; /* screen size */
-  int wx, wy, ww, wh; /* window area  */
-  unsigned int seltags;
-  unsigned int sellt;
-  unsigned int tagset[2];
-  Bool showbar;
-  Bool topbar;
-  Client *clients;
-  Client *sel;
-  Client *stack;
-  Monitor *next;
-  Window barwin;
-  const Layout *lt[2];
-  int curtag;
-  int prevtag;
-  const Layout *lts[LENGTH(tags) + 1];
-  double mfacts[LENGTH(tags) + 1];
-};
-
 /* compile-time check if all tags fit into an unsigned int bit array. */
 struct NumTags {
   char limitexceeded[LENGTH(tags) > 31 ? -1 : 1];
