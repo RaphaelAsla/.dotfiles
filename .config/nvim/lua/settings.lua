@@ -7,7 +7,6 @@ local oo = vim.o
 
 c("syntax on")
 g.mapleader = ","
-
 o.mouse = "a"
 o.signcolumn = "yes:1"
 o.cmdheight = 1
@@ -46,7 +45,7 @@ o.swapfile = false
 o.termguicolors = true
 
 c("filetype plugin indent on")
-c("colorscheme tokyonight")
+c("colorscheme tokyonight-night")
 
 o.shortmess = o.shortmess
   + {
