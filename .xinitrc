@@ -9,12 +9,6 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 
 if [ -f $sysresources ]; then
 
-
-
-
-
-
-
     xrdb -merge $sysresources
 
 fi
@@ -24,12 +18,6 @@ if [ -f $sysmodmap ]; then
 fi
 
 if [ -f "$userresources" ]; then
-
-
-
-
-
-
 
     xrdb -merge "$userresources"
 
@@ -48,25 +36,21 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-# Keyboard Layout
-#setxkbmap "us,gr" -option "grp:lwin_toggle" &
-
 # Display Resolution
 xrandr --output DP-2 --mode 1920x1080 &
 xrandr --output HDMI-0 -mode 1920x1080 &
 
-# Date and time
-/home/reavey/repos/dwm-bar/dwm_bar.sh &
+# status bar
+/home/reavey/.config/dwm-bar/dwm_bar.sh &
 
 # Move 2nd monitor to left
 xrandr --output DP-1 --auto --left-of HDMI-0 &
 
 # Compositor
-picom & 
+picom --experimental-backends & 
 
 # wallpaper
 nitrogen --restore &
 
 # Execute DWM
 exec dwm 
-
