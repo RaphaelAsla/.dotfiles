@@ -45,7 +45,8 @@ o.swapfile = false
 o.termguicolors = true
 
 c("filetype plugin indent on")
-c("colorscheme tokyonight-night")
+c("colorscheme gruber")
+--c("colorscheme tokyonight-night")
 
 o.shortmess = o.shortmess
   + {
