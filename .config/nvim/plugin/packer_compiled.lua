@@ -104,6 +104,11 @@ _G.packer_plugins = {
     path = "/home/reavey/.local/share/nvim/site/pack/packer/start/cmp_luasnip",
     url = "https://github.com/saadparwaiz1/cmp_luasnip"
   },
+  ["gruber.vim"] = {
+    loaded = true,
+    path = "/home/reavey/.local/share/nvim/site/pack/packer/start/gruber.vim",
+    url = "https://gitlab.com/madyanov/gruber.vim"
+  },
   ["lsp-status.nvim"] = {
     loaded = true,
     path = "/home/reavey/.local/share/nvim/site/pack/packer/start/lsp-status.nvim",

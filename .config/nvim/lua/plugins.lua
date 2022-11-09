@@ -32,4 +32,6 @@ return require('packer').startup(function(use)
 	  requires = { 'kyazdani42/nvim-web-devicons', -- optional, for file icons 
   },}
 
+  use 'https://gitlab.com/madyanov/gruber.vim'
+
 end)
