@@ -83,8 +83,13 @@ static const char *termcmd[] = {"st", NULL};
 static const char *roficmd[] = {"rofi", "-show", "drun", "-show-icons", NULL};
 static const char *screenshot[] = {"flameshot", "gui", NULL};
 
+static const char *soundUp[] = {"volume", "up", NULL};
+static const char *soundDown[] = {"volume", "down", NULL};
+
 static Key keys[] = {
     /* modifier                     key        function        argument */
+    {0, XK_Page_Up, spawn, {.v = soundUp}},
+    {0, XK_Page_Down, spawn, {.v = soundDown}},
     {0, XK_Print, spawn, {.v = screenshot}},
     {MODKEY, XK_p, spawn, {.v = roficmd}},
     {MODKEY | ShiftMask, XK_Return, spawn, {.v = termcmd}},
