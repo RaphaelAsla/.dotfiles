@@ -6,6 +6,8 @@ local oo = vim.o
 --vim.lsp.set_log_level("debug")
 
 c("syntax on")
+c("set list")
+c("set lcs+=tab:···,trail:·,space:·")
 g.mapleader = ","
 o.mouse = "a"
 o.signcolumn = "yes:1"
@@ -48,6 +50,7 @@ o.termguicolors = true
 c("filetype plugin indent on")
 c("colorscheme gruber")
 c("highlight CursorLineNr guifg=#ffd700")
+c("highlight CursorLine guibg=none")
 --c("colorscheme tokyonight-night")
 
 o.shortmess = o.shortmess
