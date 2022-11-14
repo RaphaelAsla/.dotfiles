@@ -34,4 +34,6 @@ return require('packer').startup(function(use)
 
   use 'https://gitlab.com/madyanov/gruber.vim'
 
+  use 'https://github.com/alvan/vim-closetag'
+
 end)
