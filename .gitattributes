@@ -1,0 +1,4 @@
+.config/** linguist-vendored
+.p10.zsh linguist-vendored
+.xinitrc linguist-vendored
+.zshrc linguist-vendored
