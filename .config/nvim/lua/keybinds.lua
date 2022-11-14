@@ -105,7 +105,7 @@ elseif &filetype == 'sh'
 elseif &filetype == 'python'
     exec "!python3 %"
 elseif &filetype == 'html'
-    exec "!google-chrome-stable % &"
+    exec "!google-chrome % &"
 elseif &filetype == 'go'
     exec "!go build %<"
     exec "!go run %"
