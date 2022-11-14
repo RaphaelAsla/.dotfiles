@@ -149,6 +149,11 @@ _G.packer_plugins = {
     path = "/home/reavey/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
     url = "https://github.com/folke/tokyonight.nvim"
   },
+  ["vim-closetag"] = {
+    loaded = true,
+    path = "/home/reavey/.local/share/nvim/site/pack/packer/start/vim-closetag",
+    url = "https://github.com/alvan/vim-closetag"
+  },
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/reavey/.local/share/nvim/site/pack/packer/start/vim-fugitive",
