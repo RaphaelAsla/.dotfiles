@@ -36,10 +36,8 @@ command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Fast editing and reloading of vimrc configs
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>e :tabedit! ~/.config/nvim/lua<cr>
+"Fast editing and reloading of vimrc configs
+map <leader>e :NvimTreeOpen ~/.config/nvim/lua<cr>
 
 " open nvim-tree
 map <leader><TAB> :NvimTreeToggle<cr>

@@ -51,7 +51,6 @@ c("filetype plugin indent on")
 c("colorscheme gruber")
 c("highlight CursorLineNr guifg=#ffd700")
 c("highlight CursorLine guibg=none")
---c("colorscheme tokyonight-night")
 
 o.shortmess = o.shortmess
   + {
