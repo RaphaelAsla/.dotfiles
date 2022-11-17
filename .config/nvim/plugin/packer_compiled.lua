@@ -144,11 +144,6 @@ _G.packer_plugins = {
     path = "/home/reavey/.local/share/nvim/site/pack/packer/start/packer.nvim",
     url = "https://github.com/wbthomason/packer.nvim"
   },
-  ["tokyonight.nvim"] = {
-    loaded = true,
-    path = "/home/reavey/.local/share/nvim/site/pack/packer/start/tokyonight.nvim",
-    url = "https://github.com/folke/tokyonight.nvim"
-  },
   ["vim-closetag"] = {
     loaded = true,
     path = "/home/reavey/.local/share/nvim/site/pack/packer/start/vim-closetag",
