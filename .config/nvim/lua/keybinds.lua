@@ -39,8 +39,10 @@ inoremap {;<CR> {<CR>};<ESC>O
 "Fast editing and reloading of vimrc configs
 map <leader>e :NvimTreeOpen ~/.config/nvim/lua<cr>
 
+noremap <c-f> :Telescope find_files <CR>
+
 " open nvim-tree
-map <leader><TAB> :NvimTreeToggle<cr>
+map <leader><TAB> :NvimTreeToggle<CR>
 
 " tabs
 map <leader>tn :tabnew<cr>
