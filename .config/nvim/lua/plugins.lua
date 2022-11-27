@@ -18,26 +18,26 @@ return require('packer').startup(function(use)
 
 	use 'hrsh7th/cmp-cmdline'
 
-	use 'L3MON4D3/LuaSnip'
+	--use 'L3MON4D3/LuaSnip'
 
-	use 'saadparwaiz1/cmp_luasnip'
+	--use 'saadparwaiz1/cmp_luasnip'
 
 	use 'nvim-lualine/lualine.nvim'
 
 	use 'tpope/vim-fugitive'
 
 	use { 'kyazdani42/nvim-tree.lua',
-	  requires = { 'kyazdani42/nvim-web-devicons', -- optional, for file icons 
-	},}
+		requires = { 'kyazdani42/nvim-web-devicons', -- optional, for file icons
+		}, }
 
 	use 'https://gitlab.com/madyanov/gruber.vim'
 
 	use 'https://github.com/alvan/vim-closetag'
 
 	use {
-	  'nvim-telescope/telescope.nvim', tag = '0.1.0',
-	-- or                            , branch = '0.1.x',
-	  requires = { {'nvim-lua/plenary.nvim'} }
-}
+		'nvim-telescope/telescope.nvim', tag = '0.1.0',
+		-- or                            , branch = '0.1.x',
+		requires = { { 'nvim-lua/plenary.nvim' } }
+	}
 
 end)
