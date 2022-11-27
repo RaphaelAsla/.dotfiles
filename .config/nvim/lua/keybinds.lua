@@ -97,6 +97,8 @@ if &filetype == 'c'
 elseif &filetype == 'cpp'
     exec "!clang++ -std=c++20 -Wall % -o %<"
     exec "!./%<"
+elseif &filetype == 'rust'
+    exec "!cargo run"
 elseif &filetype == 'java'
     exec "!javac %"
     exec "!java %"
