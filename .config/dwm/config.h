@@ -6,8 +6,7 @@ static const unsigned int snap = 0;     /* snap pixel */
 static const unsigned int gappx = 3;
 static const int showbar = 1; /* 0 means no bar */
 static const int topbar = 1;  /* 0 means bottom bar */
-static const char *fonts[] = {"JetBrainsMonoNL-Light:size=13",
-                              "Font Awesome 5 Free", "JoyPixels:size=8"};
+static const char* fonts[] = {"JetBrainsMonoNL-Light:size=13", "Font Awesome 5 Free", "JoyPixels:size=8"};
 static const char dmenufont[] = "JetBrainsMonoNL-Light:size=13";
 static const char col_gray1[] = "#222222";
 static const char col_gray2[] = "#444444";
@@ -15,23 +14,19 @@ static const char col_gray3[] = "#bbbbbb";
 static const char col_gray4[] = "#eeeeee";
 static const char col_bar[] = "#222222";
 static const char border[] = "#9173d9";
-static const char *colors[][3] = {
+static const char* colors[][3] = {
     /*               fg         bg         border   */
     [SchemeNorm] = {col_gray3, col_gray1, col_gray2},
     [SchemeSel] = {col_gray4, col_bar, border},
 };
 
 /* tagging */
-static const char *tags[] = {"1", "2", "3"};
+static const char* tags[] = {"1", "2", "3"};
 
-static const unsigned int ulinepad =
-    5; /* horizontal padding between the underline and tag */
-static const unsigned int ulinestroke =
-    2; /* thickness / height of the underline */
-static const unsigned int ulinevoffset =
-    0; /* how far above the bottom of the bar the line should appear */
-static const int ulineall =
-    0; /* 1 to show underline on all tags, 0 for just the active ones */
+static const unsigned int ulinepad = 5;     /* horizontal padding between the underline and tag */
+static const unsigned int ulinestroke = 2;  /* thickness / height of the underline */
+static const unsigned int ulinevoffset = 0; /* how far above the bottom of the bar the line should appear */
+static const int ulineall = 0;              /* 1 to show underline on all tags, 0 for just the active ones */
 
 static const Rule rules[] = {
     /* xprop(1):
@@ -39,16 +34,14 @@ static const Rule rules[] = {
      *	WM_NAME(STRING) = title
      */
     /* class      instance    title       tags mask     isfloating   monitor */
-    {"Firefox", NULL, NULL, 1 << 8, 0, -1},
+    {"google-chrome-stable", NULL, NULL, 1 << 8, 0, -1},
 };
 
 /* layout(s) */
-static const float mfact = 0.55; /* factor of master area size [0.05..0.95] */
-static const int nmaster = 1;    /* number of clients in master area */
-static const int resizehints =
-    1; /* 1 means respect size hints in tiled resizals */
-static const int lockfullscreen =
-    1; /* 1 will force focus on the fullscreen window */
+static const float mfact = 0.55;     /* factor of master area size [0.05..0.95] */
+static const int nmaster = 1;        /* number of clients in master area */
+static const int resizehints = 1;    /* 1 means respect size hints in tiled resizals */
+static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
 
 static const Layout layouts[] = {
     /* symbol     arrange function */
@@ -60,31 +53,34 @@ static const Layout layouts[] = {
 
 /* key definitions */
 #define MODKEY Mod1Mask
-#define TAGKEYS(KEY, TAG)                                                      \
-  {MODKEY, KEY, view, {.ui = 1 << TAG}},                                       \
-      {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}},               \
-      {MODKEY | ShiftMask, KEY, tag, {.ui = 1 << TAG}},                        \
-      {MODKEY | ControlMask | ShiftMask, KEY, toggletag, {.ui = 1 << TAG}},
-
-/* helper for spawning shell commands in the pre dwm-5.0 fashion */
-#define SHCMD(cmd)                                                             \
-  {                                                                            \
-    .v = (const char *[]) { "/usr/local/bin/st", "-c", cmd, NULL }             \
-  }
+#define TAGKEYS(KEY, TAG)                                                                             \
+    {MODKEY, KEY, view, {.ui = 1 << TAG}}, {MODKEY | ControlMask, KEY, toggleview, {.ui = 1 << TAG}}, \
+        {MODKEY | ShiftMask, KEY, tag, {.ui = 1 << TAG}},                                             \
+        {MODKEY | ControlMask | ShiftMask, KEY, toggletag, {.ui = 1 << TAG}},
 
 /* commands */
-static char dmenumon[2] =
-    "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = {
-    "dmenu_run", "-l",      "10",  "-fn",   dmenufont, "-nb",     col_gray1,
-    "-nf",       col_gray3, "-sb", col_bar, "-sf",     col_gray4, NULL};
+static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
+static const char* dmenucmd[] = {"dmenu_run",
+                                 "-l",
+                                 "10",
+                                 "-fn",
+                                 dmenufont,
+                                 "-nb",
+                                 col_gray1,
+                                 "-nf",
+                                 col_gray3,
+                                 "-sb",
+                                 col_bar,
+                                 "-sf",
+                                 col_gray4,
+                                 NULL};
 
-static const char *termcmd[] = {"st", NULL};
-static const char *roficmd[] = {"rofi", "-show", "drun", "-show-icons", NULL};
-static const char *screenshot[] = {"flameshot", "gui", NULL};
+static const char* termcmd[] = {"st", NULL};
+static const char* roficmd[] = {"rofi", "-show", "drun", "-show-icons", NULL};
+static const char* screenshot[] = {"flameshot", "gui", NULL};
 
-static const char *soundUp[] = {"volume", "up", NULL};
-static const char *soundDown[] = {"volume", "down", NULL};
+static const char* soundUp[] = {"volume", "up", NULL};
+static const char* soundDown[] = {"volume", "down", NULL};
 
 static Key keys[] = {
     /* modifier                     key        function        argument */
@@ -115,9 +111,8 @@ static Key keys[] = {
     {MODKEY, XK_period, focusmon, {.i = +1}},
     {MODKEY | ShiftMask, XK_comma, tagmon, {.i = -1}},
     {MODKEY | ShiftMask, XK_period, tagmon, {.i = +1}},
-    TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3)
-        TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5) TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7)
-            TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_q, quit, {0}},
+    TAGKEYS(XK_1, 0) TAGKEYS(XK_2, 1) TAGKEYS(XK_3, 2) TAGKEYS(XK_4, 3) TAGKEYS(XK_5, 4) TAGKEYS(XK_6, 5)
+        TAGKEYS(XK_7, 6) TAGKEYS(XK_8, 7) TAGKEYS(XK_9, 8){MODKEY | ShiftMask, XK_q, quit, {0}},
 };
 
 /* button definitions */
