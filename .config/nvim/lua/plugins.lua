@@ -18,10 +18,6 @@ return require('packer').startup(function(use)
 
 	use 'hrsh7th/cmp-cmdline'
 
-	--use 'L3MON4D3/LuaSnip'
-
-	--use 'saadparwaiz1/cmp_luasnip'
-
 	use 'nvim-lualine/lualine.nvim'
 
 	use 'tpope/vim-fugitive'
@@ -39,5 +35,7 @@ return require('packer').startup(function(use)
 		-- or                            , branch = '0.1.x',
 		requires = { { 'nvim-lua/plenary.nvim' } }
 	}
+
+	use 'psf/black'
 
 end)
