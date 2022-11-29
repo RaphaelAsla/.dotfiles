@@ -43,7 +43,7 @@ end
 local sumneko_root_path = "/usr/bin/lua-language-server"
 local sumneko_binary = "/usr/bin/lua-language-server"
 
-require 'lspconfig'.sumneko_lua.setup {
+require('lspconfig').sumneko_lua.setup {
 	on_attach = on_attach,
 	cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
 	settings = {
