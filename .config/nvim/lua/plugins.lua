@@ -36,6 +36,6 @@ return require('packer').startup(function(use)
 		requires = { { 'nvim-lua/plenary.nvim' } }
 	}
 
-	use 'psf/black'
+	use 'dstein64/vim-startuptime'
 
 end)

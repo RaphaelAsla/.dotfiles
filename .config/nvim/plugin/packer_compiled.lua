@@ -74,11 +74,6 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
-  black = {
-    loaded = true,
-    path = "/home/reavey/.local/share/nvim/site/pack/packer/start/black",
-    url = "https://github.com/psf/black"
-  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/reavey/.local/share/nvim/site/pack/packer/start/cmp-buffer",
@@ -158,6 +153,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/reavey/.local/share/nvim/site/pack/packer/start/vim-fugitive",
     url = "https://github.com/tpope/vim-fugitive"
+  },
+  ["vim-startuptime"] = {
+    loaded = true,
+    path = "/home/reavey/.local/share/nvim/site/pack/packer/start/vim-startuptime",
+    url = "https://github.com/dstein64/vim-startuptime"
   }
 }
 
