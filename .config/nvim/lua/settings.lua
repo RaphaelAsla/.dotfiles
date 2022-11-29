@@ -9,6 +9,7 @@ c("syntax on")
 c("set list")
 c("set lcs+=tab:···,trail:·,space:·")
 g.mapleader = ","
+o.termguicolors = true
 o.mouse = "a"
 o.signcolumn = "yes:1"
 o.cmdheight = 1
@@ -34,7 +35,7 @@ o.history = 500
 o.undofile = true
 o.undodir = vim.fn.stdpath('cache') .. '/NvimUndofile'
 o.splitright = true
-oo.guicursor = 'i-r-cr-ci:hor40'
+oo.guicursor = 'a:block'
 
 o.tabstop = 4
 o.softtabstop = 4
@@ -45,7 +46,6 @@ o.backup = false
 o.writebackup = false
 o.swapfile = false
 
-o.termguicolors = true
 
 c("filetype plugin indent on")
 c("colorscheme gruber")
@@ -62,7 +62,7 @@ o.shortmess = o.shortmess
 	}
 
 vim.api.nvim_command [[
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-au FocusGained,BufEnter * checktime
-au BufWritePre *.py execute ':Black'
+	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+	au FocusGained,BufEnter * checktime
+	au BufWritePre *.py execute ':Black'
 ]]
