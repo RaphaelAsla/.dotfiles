@@ -21,11 +21,6 @@ alias chrome=google-chrome-stable
 #alias for neovim
 alias vim=nvim
 
-#run tmux by default and some checks
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux
-fi
-
 #alias for vscodium
 alias code=codium
 
