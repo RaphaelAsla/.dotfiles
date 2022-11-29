@@ -22,10 +22,6 @@ return require('packer').startup(function(use)
 
 	use 'tpope/vim-fugitive'
 
-	use { 'kyazdani42/nvim-tree.lua',
-		requires = { 'kyazdani42/nvim-web-devicons', -- optional, for file icons
-		}, }
-
 	use 'https://gitlab.com/madyanov/gruber.vim'
 
 	use 'https://github.com/alvan/vim-closetag'
