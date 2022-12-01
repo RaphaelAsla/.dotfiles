@@ -64,5 +64,4 @@ o.shortmess = o.shortmess
 vim.api.nvim_command [[
 	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 	au FocusGained,BufEnter * checktime
-	au BufWritePre *.py execute ':Black'
 ]]
