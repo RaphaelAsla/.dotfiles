@@ -36,13 +36,11 @@ command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
-"Fast editing and reloading of vimrc configs
-map <leader>e :NvimTreeOpen ~/.config/nvim/lua<cr>
+"Open neovim config
+map <leader>e :Explore ~/.config/nvim/lua<CR>
 
-noremap <c-f> :Telescope find_files <CR>
-
-" open nvim-tree
-map <leader><TAB> :NvimTreeToggle<CR>
+"Telescope
+noremap <leader>ff :Telescope find_files<CR>
 
 " tabs
 map <leader>tn :tabnew<cr>
