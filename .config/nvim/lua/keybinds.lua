@@ -37,8 +37,7 @@ inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
 "Open neovim config
-map <leader>e :Explore ~/.config/nvim/lua<CR>
-
+map <leader>e :tabnew ~/.config/nvim/lua<CR>
 "Telescope
 noremap <leader>ff :Telescope find_files<CR>
 
