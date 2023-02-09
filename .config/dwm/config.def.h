@@ -79,8 +79,8 @@ static const char* termcmd[] = {"st", NULL};
 static const char* roficmd[] = {"rofi", "-show", "drun", "-show-icons", NULL};
 static const char* screenshot[] = {"flameshot", "gui", NULL};
 
-static const char* soundUp[] = {"./volume", "up", NULL};
-static const char* soundDown[] = {"./volume", "down", NULL};
+static const char* soundUp[] = {"volume", "up", NULL};
+static const char* soundDown[] = {"volume", "down", NULL};
 
 static Key keys[] = {
     /* modifier                     key        function        argument */
