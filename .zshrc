@@ -14,6 +14,7 @@ alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir
 
 #nvim
 export SUDO_ASKPASS='/usr/lib/ssh/x11-ssh-askpass'
+export PATH=$PATH:/opt/cuda/bin
 
 #alias for chrome
 alias chrome=google-chrome-stable
@@ -92,7 +93,7 @@ ZSH_THEME="bureau"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git archlinux zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git archlinux zsh-syntax-highlighting zsh-autosuggestions fancy-ctrl-z)
 
 source $ZSH/oh-my-zsh.sh
 
