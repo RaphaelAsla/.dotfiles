@@ -1,8 +1,0 @@
-#!/bin/sh
-if [ $1 == "up" ]; 
-then
-	$(/usr/bin/pactl set-sink-volume $(/usr/bin/pactl list sinks short | grep 'RUNNING' | awk '{print $1}') +10%);
-elif [ $1 == "down" ];
-then
-	$(/usr/bin/pactl set-sink-volume $(/usr/bin/pactl list sinks short | grep 'RUNNING' | awk '{print $1}') -10%);
-fi
