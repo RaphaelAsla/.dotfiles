@@ -46,6 +46,8 @@ inoremap {;<CR> {<CR>};<ESC>O
 map <leader>e :tabnew ~/.config/nvim/lua<CR>
 "Telescope
 noremap <leader>f :Telescope find_files<CR>
+noremap <leader>g :Telescope grep_string<CR>
+
 
 "disable recording
 map q <Nop>
@@ -54,7 +56,7 @@ map q <Nop>
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
+map <leader>tm :tabmove
 
 " Go to tab by number
 noremap <leader>1 1gt
