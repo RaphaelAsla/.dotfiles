@@ -35,6 +35,7 @@ o.undofile = true
 o.undodir = vim.fn.stdpath('cache') .. '/NvimUndofile'
 o.splitright = true
 oo.guicursor = 'i-r-cr-ci:hor40'
+g.netrw_banner = 0
 
 o.tabstop = 4
 o.softtabstop = 4
@@ -52,13 +53,13 @@ c("highlight CursorLineNr guifg=#ffd700")
 c("highlight CursorLine guibg=none")
 
 o.shortmess = o.shortmess
-    + {
-            A = true, -- don't give the "ATTENTION" message when an existing swap file is found.
-            I = true, -- don't give the intro message when starting Vim |:intro|.
-            W = true, -- don't give "written" or "[w]" when writing a file
-            c = true, -- don't give |ins-completion-menu| messages
-            m = true, -- use "[+]" instead of "[Modified]"
-    }
+	+ {
+		A = true, -- don't give the "ATTENTION" message when an existing swap file is found.
+		I = true, -- don't give the intro message when starting Vim |:intro|.
+		W = true, -- don't give "written" or "[w]" when writing a file
+		c = true, -- don't give |ins-completion-menu| messages
+		m = true, -- use "[+]" instead of "[Modified]"
+	}
 
 vim.api.nvim_command [[
 	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif

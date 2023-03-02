@@ -53,4 +53,4 @@ picom &
 nitrogen --restore &
 
 # Execute DWM
-exec dwm 
+exec dwm

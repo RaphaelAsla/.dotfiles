@@ -44,9 +44,13 @@ inoremap {;<CR> {<CR>};<ESC>O
 
 "Open neovim config
 map <leader>e :tabnew ~/.config/nvim/lua<CR>
+
 "Telescope
-noremap <leader>f :Telescope find_files<CR>
-noremap <leader>g :Telescope grep_string<CR>
+noremap <leader>ff :Telescope find_files<CR>
+noremap <leader>gg :Telescope grep_string<CR>
+
+"Explorer
+noremap <leader><tab> :Explore <CR>
 
 
 "disable recording
