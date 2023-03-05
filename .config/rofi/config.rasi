@@ -6,7 +6,7 @@ configuration {
 	drun {
 		fallback-icon: "package-x-generic";
 	}
-	font: "JetBrains Mono 13";
+	font: "iosevka 15";
 }
 
 configuration {

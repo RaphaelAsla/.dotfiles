@@ -36,14 +36,13 @@ local on_attach = function(client, bufnr)
 		vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
 		vim.api.nvim_command [[augroup END]]
 	end
-
 end
 
 
 local sumneko_root_path = "/usr/bin/lua-language-server"
 local sumneko_binary = "/usr/bin/lua-language-server"
 
-require('lspconfig').sumneko_lua.setup {
+require('lspconfig').lua_ls.setup {
 	on_attach = on_attach,
 	cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
 	settings = {
@@ -60,7 +59,7 @@ require('lspconfig').sumneko_lua.setup {
 			},
 			workspace = {
 				-- Make the server aware of Neovim runtime files
-				library = { [vim.fn.expand('$VIMRUNTIME/lua')] = true, [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true }
+				library = { [vim.fn.expand('$VIMRUNTIME/lua')] = true,[vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true }
 			}
 		}
 	}
