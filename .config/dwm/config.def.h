@@ -6,7 +6,7 @@ static const unsigned int snap = 0;     /* snap pixel */
 static const unsigned int gappx = 3;
 static const int showbar = 1; /* 0 means no bar */
 static const int topbar = 1;  /* 0 means bottom bar */
-static const char* fonts[] = {"JetBrainsMonoNL-Light:size=13", "Font Awesome 5 Free", "JoyPixels:size=8"};
+static const char* fonts[] = {"iosevka:size=18", "Font Awesome 5 Free", "JoyPixels:size=8"};
 static const char dmenufont[] = "JetBrainsMonoNL-Light:size=13";
 static const char col_gray1[] = "#222222";
 static const char col_gray2[] = "#444444";
