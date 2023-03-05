@@ -1,59 +1,58 @@
-local o = vim.opt
+local opt = vim.opt
 local g = vim.g
-local c = vim.cmd
-local oo = vim.o
+local cmd = vim.cmd
+local o = vim.o
 
 --vim.lsp.set_log_level("debug")
 
-c("syntax on")
-c("set list")
-c("set lcs+=tab:···,trail:·,space:·")
+cmd("syntax on")
+opt.list = true
+opt.listchars:append({ tab = "···", trail = "·", space = "·" })
 g.mapleader = ","
-o.termguicolors = true
-o.mouse = "a"
-o.signcolumn = "yes:1"
-o.cmdheight = 1
-o.updatetime = 500
-o.completeopt:append('menuone,noinsert,noselect')
-o.clipboard = 'unnamedplus'
-o.timeoutlen = 500
-o.wrap = false
-o.ww:append('<,>,h,l,[,]')
-o.nu = true
-o.rnu = true
-o.showmode = false
-o.autoindent = true
-o.smartindent = true
-o.copyindent = true
-o.incsearch = true
-o.so = 10
-o.siso = 5
-o.cursorline = true
-o.autoread = true
-o.history = 500
-o.undofile = true
-o.undodir = vim.fn.stdpath('cache') .. '/NvimUndofile'
-o.splitright = true
-oo.guicursor = 'i-r-cr-ci:hor40'
+opt.termguicolors = true
+opt.mouse = "a"
+opt.signcolumn = "yes:1"
+opt.cmdheight = 1
+opt.updatetime = 500
+opt.completeopt:append('menuone,noinsert,noselect')
+opt.clipboard = 'unnamedplus'
+opt.timeoutlen = 500
+opt.wrap = false
+opt.ww:append('<,>,h,l,[,]')
+opt.nu = true
+opt.rnu = true
+opt.showmode = false
+opt.autoindent = true
+opt.smartindent = true
+opt.copyindent = true
+opt.incsearch = true
+opt.so = 10
+opt.siso = 5
+opt.cursorline = true
+opt.autoread = true
+opt.history = 500
+opt.undofile = true
+opt.undodir = vim.fn.stdpath('cache') .. '/NvimUndofile'
+opt.splitright = true
+o.guicursor = 'i-r-cr-ci:hor40'
+opt.termguicolors = true
 g.netrw_banner = 0
 
-o.tabstop = 4
-o.softtabstop = 4
-o.shiftwidth = 4
-o.expandtab = false
+opt.tabstop = 4
+opt.softtabstop = 4
+opt.shiftwidth = 4
+opt.expandtab = false
 
-o.backup = false
-o.writebackup = false
-o.swapfile = false
+opt.backup = false
+opt.writebackup = false
+opt.swapfile = false
 
+cmd("filetype plugin indent on")
+cmd("colorscheme gruber")
+cmd("highlight CursorLineNr guifg=#ffd700")
+cmd("highlight CursorLine guibg=none")
 
-c("filetype plugin indent on")
-c("colorscheme gruber")
-c("highlight CursorLineNr guifg=#ffd700")
-c("highlight CursorLine guibg=none")
-
-o.shortmess = o.shortmess
-	+ {
+opt.shortmess = opt.shortmess + {
 		A = true, -- don't give the "ATTENTION" message when an existing swap file is found.
 		I = true, -- don't give the intro message when starting Vim |:intro|.
 		W = true, -- don't give "written" or "[w]" when writing a file
@@ -62,6 +61,6 @@ o.shortmess = o.shortmess
 	}
 
 vim.api.nvim_command [[
-	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-	au FocusGained,BufEnter * checktime
+    au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+    au FocusGained,BufEnter * checktime
 ]]
