@@ -6,7 +6,7 @@ configuration {
 	drun {
 		fallback-icon: "package-x-generic";
 	}
-	font: "iosevka 15";
+	font: "iosevka 13";
 }
 
 configuration {
