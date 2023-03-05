@@ -12,6 +12,16 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
+	{
+		'https://gitlab.com/madyanov/gruber.vim',
+		lazy = false,
+		priority = 1000
+	},
+	'https://github.com/alvan/vim-closetag',
+	{
+		'nvim-telescope/telescope.nvim',
+		'nvim-lua/plenary.nvim'
+	},
 	'neovim/nvim-lspconfig',
 	'hrsh7th/nvim-cmp',
 	'nvim-lua/lsp-status.nvim',
@@ -21,15 +31,6 @@ require("lazy").setup({
 	'hrsh7th/cmp-cmdline',
 	'nvim-lualine/lualine.nvim',
 	'tpope/vim-fugitive',
-	{
-		'https://gitlab.com/madyanov/gruber.vim',
-		lazy = false,
-		priority = 1000
-	},
-	'https://github.com/alvan/vim-closetag',
-	{
-		'nvim-telescope/telescope.nvim',
-		'nvim-lua/plenary.nvim',
-	},
 	'dstein64/vim-startuptime',
+	'nvim-treesitter/nvim-treesitter',
 })
