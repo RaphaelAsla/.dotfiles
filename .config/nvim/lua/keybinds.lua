@@ -21,8 +21,7 @@ xnoremap <expr> P 'Pgv"'.v:register.'y`>'
 vnoremap <leader>d "_d
 
 " un-highlight text
-map <C-space> ?
-map <silent> <leader><cr> :noh<cr>
+map <silent> <leader>n :noh<cr>
 
 nnoremap <silent> <CR> :noh<CR><CR>
 
@@ -50,6 +49,9 @@ nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+"Search and replace
+nnoremap <leader>s :%s/
 
 "Explorer
 noremap <leader><tab> :Explore <CR>
