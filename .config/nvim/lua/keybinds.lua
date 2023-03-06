@@ -46,8 +46,10 @@ inoremap {;<CR> {<CR>};<ESC>O
 map <leader>e :tabnew ~/.config/nvim/lua<CR>
 
 "Telescope
-noremap <leader>ff :Telescope find_files<CR>
-noremap <leader>gg :Telescope grep_string<CR>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 "Explorer
 noremap <leader><tab> :Explore <CR>

@@ -17,18 +17,22 @@ require("lazy").setup({
 		lazy = false,
 		priority = 1000
 	},
-	'https://github.com/alvan/vim-closetag',
 	{
 		'nvim-telescope/telescope.nvim',
-		'nvim-lua/plenary.nvim'
+		'nvim-lua/plenary.nvim',
 	},
+	{
+		"hrsh7th/nvim-cmp",
+		dependencies = {
+			'hrsh7th/cmp-nvim-lsp',
+			'hrsh7th/cmp-cmdline',
+			'hrsh7th/cmp-buffer',
+			'hrsh7th/cmp-path',
+		},
+	},
+	'https://github.com/alvan/vim-closetag',
 	'neovim/nvim-lspconfig',
-	'hrsh7th/nvim-cmp',
 	'nvim-lua/lsp-status.nvim',
-	'hrsh7th/cmp-nvim-lsp',
-	'hrsh7th/cmp-buffer',
-	'hrsh7th/cmp-path',
-	'hrsh7th/cmp-cmdline',
 	'nvim-lualine/lualine.nvim',
 	'tpope/vim-fugitive',
 	'dstein64/vim-startuptime',
