@@ -32,5 +32,4 @@ require("lazy").setup({
 	'nvim-lualine/lualine.nvim',
 	'tpope/vim-fugitive',
 	'dstein64/vim-startuptime',
-	'nvim-treesitter/nvim-treesitter',
 })
