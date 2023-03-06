@@ -1,48 +1,48 @@
 vim.api.nvim_exec([[
+"Exit inssert mode
 inoremap jj <ESC>
 
-" surround words in brackets
-vnoremap $1 <esc>`>a)<esc>`<i(<esc>
-vnoremap $2 <esc>`>a]<esc>`<i[<esc>
-vnoremap $3 <esc>`>a}<esc>`<i{<esc>
-vnoremap $$ <esc>`>a"<esc>`<i"<esc>
-vnoremap $q <esc>`>a'<esc>`<i'<esc>
-vnoremap $e <esc>`>a`<esc>`<i`<esc>
-
-" indent left/right and re-select
+"Indent left/right and re-select
 vnoremap < <gv
 vnoremap > >gv
 
-" copy paste stuff
+"Copy paste stuff
 xnoremap <expr> p 'pgv"'.v:register.'y`>'
 xnoremap <expr> P 'Pgv"'.v:register.'y`>'
 
-" delete without copying
-vnoremap <leader>d "_d
+"Delete without copying
+map <leader>d "_d
 
-" un-highlight text
-map <silent> <leader>n :noh<cr>
+"Clear highlighted text
+nnoremap <silent><esc> :noh<CR>
 
-nnoremap <silent> <CR> :noh<CR><CR>
-
-" i don't remember
+"Go to start  of line
 map 0 ^
 
-" write without sudo
+"Write sudo files
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
-" open close brackets
-"inoremap ( ()<left>
-"inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
-"inoremap [ []<left>
-"inoremap <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
-"inoremap { {}<left>
-"inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
+"Open close brackets
 inoremap {<CR> {<CR>}<ESC>O
 inoremap {;<CR> {<CR>};<ESC>O
 
 "Open neovim config
-map <leader>e :tabnew ~/.config/nvim/lua<CR>
+nnoremap <leader>e :tabnew ~/.config/nvim/lua<CR>
+
+"Search and replace
+nnoremap <leader>s :%s/
+
+"Explorer
+nnoremap <leader><tab> :Explore <CR>
+
+"Disable recording
+map q <Nop>
+
+"Tabs
+nnoremap <leader>tn :tabnew<cr>
+nnoremap <leader>to :tabonly<cr>
+nnoremap <leader>tc :tabclose<cr>
+nnoremap <leader>tm :tabmove
 
 "Telescope
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
@@ -50,54 +50,41 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-"Search and replace
-nnoremap <leader>s :%s/
+"Go to tab by number
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+nnoremap <leader>3 3gt
+nnoremap <leader>4 4gt
+nnoremap <leader>5 5gt
+nnoremap <leader>6 6gt
+nnoremap <leader>7 7gt
+nnoremap <leader>8 8gt
+nnoremap <leader>9 9gt
+nnoremap <leader>0 :tablast<cr>
 
-"Explorer
-noremap <leader><tab> :Explore <CR>
+"Surround words in brackets
+vnoremap $1 <esc>`>a)<esc>`<i(<esc>
+vnoremap $2 <esc>`>a]<esc>`<i[<esc>
+vnoremap $3 <esc>`>a}<esc>`<i{<esc>
+vnoremap $$ <esc>`>a"<esc>`<i"<esc>
+vnoremap $q <esc>`>a'<esc>`<i'<esc>
+vnoremap $e <esc>`>a`<esc>`<i`<esc>
 
-
-"disable recording
-map q <Nop>
-
-" tabs
-map <leader>tn :tabnew<cr>
-map <leader>to :tabonly<cr>
-map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove
-
-" Go to tab by number
-noremap <leader>1 1gt
-noremap <leader>2 2gt
-noremap <leader>3 3gt
-noremap <leader>4 4gt
-noremap <leader>5 5gt
-noremap <leader>6 6gt
-noremap <leader>7 7gt
-noremap <leader>8 8gt
-noremap <leader>9 9gt
-noremap <leader>0 :tablast<cr>
-
-" Move line
+"Move line
 nnoremap <leader>j :m .+1<CR>==
 nnoremap <leader>k :m .-2<CR>==
 vnoremap <leader>j :m '>+1<CR>gv=gv
 vnoremap <leader>k :m '<-2<CR>gv=gv
 
-" Opens a new tab with the current buffer's path
-" Super useful when editing files in the same directory
+"Opens a new tab with the current buffer's path
+"Super useful when editing files in the same directory
 map <leader>te :tabedit <C-r>=expand("%:p:h")<cr>/
 
-" get current dir
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
+"Get current dir
+nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 map <F5> :call CompileRun()<CR>
-imap <F5> <Esc>:call CompileRun()<CR>
-vmap <F5> <Esc>:call CompileRun()<CR>
-
 map <F6> :call BuildRun()<CR>
-imap <F6> <Esc>:call BuildRun()<CR>
-vmap <F6> <Esc>:call BuildRun()<CR>
 
 func! BuildRun()
 exec "w"
