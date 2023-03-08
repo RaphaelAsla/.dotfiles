@@ -9,9 +9,6 @@ vim.api.nvim_set_keymap('n', '<space>q', '<cmd>lua vim.diagnostic.setloclist()<C
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-	-- Enable completion triggered by <c-x><c-o>
-	-- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
-
 	-- Mappings.
 	-- See `:help vim.lsp.*` for documentation on any of the below functions
 	vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -29,7 +26,6 @@ local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_keymap(bufnr, 'n', 'gr', '<cmd>lua vim.lsp.buf.references()<CR>', opts)
 	vim.api.nvim_buf_set_keymap(bufnr, 'n', '<space>f', '<cmd>lua vim.lsp.buf.format()<CR>', opts)
 
-
 	if client.server_capabilities.documentFormattingProvider then
 		vim.api.nvim_command [[augroup Format]]
 		vim.api.nvim_command [[autocmd! * <buffer>]]
@@ -37,7 +33,6 @@ local on_attach = function(client, bufnr)
 		vim.api.nvim_command [[augroup END]]
 	end
 end
-
 
 local sumneko_root_path = "/usr/bin/lua-language-server"
 local sumneko_binary = "/usr/bin/lua-language-server"
@@ -64,6 +59,7 @@ require('lspconfig').lua_ls.setup {
 		}
 	}
 }
+
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
 local servers = { 'pyright', 'clangd', 'jdtls', 'tsserver', 'rust_analyzer', 'html' }
