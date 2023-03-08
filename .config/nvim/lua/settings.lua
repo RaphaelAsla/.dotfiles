@@ -6,9 +6,10 @@ local o = vim.o
 --vim.lsp.set_log_level("debug")
 
 cmd("syntax on")
-opt.list = true
-opt.listchars:append({ tab = "···", trail = "·", space = "·" })
+cmd("filetype plugin indent on")
+
 g.mapleader = ","
+o.guicursor = 'i-r-cr-ci:hor40'
 opt.termguicolors = true
 opt.mouse = "a"
 opt.signcolumn = "yes:1"
@@ -34,23 +35,28 @@ opt.history = 500
 opt.undofile = true
 opt.undodir = vim.fn.stdpath('cache') .. '/NvimUndofile'
 opt.splitright = true
-o.guicursor = 'i-r-cr-ci:hor40'
-opt.termguicolors = true
-g.netrw_banner = 0
-
 opt.tabstop = 4
 opt.softtabstop = 4
 opt.shiftwidth = 4
 opt.expandtab = false
-
 opt.backup = false
 opt.writebackup = false
 opt.swapfile = false
+opt.list = true
+opt.listchars:append({ tab = "···", trail = "·", space = "·" })
+opt.termguicolors = true
+g.netrw_banner = 0
 
-cmd("filetype plugin indent on")
+
 cmd("colorscheme gruber")
-cmd("highlight CursorLineNr guifg=#ffd700")
-cmd("highlight CursorLine guibg=none")
+cmd("highlight! CursorLineNr guifg=#ffd700")
+cmd("highlight! CursorLine guibg=none")
+cmd("highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough")
+cmd("highlight! CmpItemAbbrMatch guifg=#87d75f guibg=NONE")
+cmd("highlight! link CmpItemAbbrMatchFuzzy CmpItemAbbrMatch")
+cmd("highlight! CmpItemMenu guifg=#afafd7")
+cmd("highlight! CmpItemKind guifg=#ffd700 guibg=NONE")
+cmd("highlight! PMenu guifg=#NONE guibg=#2e2e2e")
 
 opt.shortmess = opt.shortmess + {
 	A = true, -- don't give the "ATTENTION" message when an existing swap file is found.
