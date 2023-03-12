@@ -64,7 +64,7 @@ require('lspconfig').lua_ls.setup {
 }
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
-local servers = { 'pyright', 'cmake', 'clangd', 'jdtls', 'tsserver', 'rust_analyzer', 'html' }
+local servers = { 'pyright', 'clangd', 'jdtls', 'tsserver', 'rust_analyzer', 'html' }
 for _, lsp in pairs(servers) do
 	require('lspconfig')[lsp].setup {
 		on_attach = on_attach,
