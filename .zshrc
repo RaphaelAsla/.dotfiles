@@ -20,6 +20,8 @@ alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir
 
 #nvim
 export SUDO_ASKPASS='/usr/lib/ssh/x11-ssh-askpass'
+
+#cuda
 export PATH=$PATH:/opt/cuda/bin
 
 #alias for chrome
@@ -31,7 +33,11 @@ alias vim=nvim
 #alias for vscodium
 alias code=codium
 
-#alias rpi="ssh rpi@192.168.1.27"
+# fun
+function ex
+{
+  cd ~/code/cpp/experiments
+}
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
