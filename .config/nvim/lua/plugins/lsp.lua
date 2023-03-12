@@ -69,7 +69,7 @@ for _, lsp in pairs(servers) do
 	require('lspconfig')[lsp].setup {
 		on_attach = on_attach,
 		flags = {
-			allow_incremental_sync = true,
+			allow_incremental_sync = false,
 			debounce_text_changes = 150,
 		},
 	}
