@@ -37,5 +37,4 @@ require("lazy").setup({
 	'nvim-lualine/lualine.nvim',
 	'tpope/vim-fugitive',
 	'dstein64/vim-startuptime',
-	'Mofiqul/vscode.nvim',
 })
