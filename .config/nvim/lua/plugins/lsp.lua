@@ -60,7 +60,9 @@ end
 local sumneko_root_path = "/usr/bin/lua-language-server"
 local sumneko_binary = "/usr/bin/lua-language-server"
 
-require('lspconfig').lua_ls.setup {
+local lspconfig = require("lspconfig")
+
+lspconfig.lua_ls.setup {
 	on_attach = on_attach,
 	cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
 	settings = {
@@ -89,7 +91,7 @@ require('lspconfig').lua_ls.setup {
 -- Use a loop to conveniently call 'setup' on multiple servers and
 local servers = { 'pyright', 'clangd', 'jdtls', 'tsserver', 'rust_analyzer', 'html' }
 for _, lsp in pairs(servers) do
-	require('lspconfig')[lsp].setup {
+	lspconfig[lsp].setup {
 		on_attach = on_attach,
 		flags = {
 			allow_incremental_sync = false,
