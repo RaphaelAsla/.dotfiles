@@ -12,6 +12,7 @@ g.mapleader = ","
 o.guicursor = 'i-r-cr-ci:hor40'
 opt.termguicolors = true
 opt.mouse = "a"
+opt.cinkeys:remove({ ':' })
 opt.signcolumn = "yes:1"
 opt.cmdheight = 1
 opt.updatetime = 500
