@@ -5,8 +5,8 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char* font = "Terminus:pixelsize=18:antialias=true:autohint=true:style=bold";
-static char* font2[] = {"JoyPixels"};
+static char* font = "Iosevka:pixelsize=18:antialias=true:autohint=true:style=bold";
+static char* font2[] = {"JoyPixels", "Font Awesome 5 Free"};
 static int borderpx = 2;
 
 /*
