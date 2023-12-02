@@ -41,7 +41,7 @@ xrandr --output DP-2 --mode 1920x1080 &
 xrandr --output HDMI-0 --mode 1920x1080 &
 
 # Move 2nd monitor to left
-xrandr --output DP-1 --auto --left-of HDMI-0 &
+xrandr --output DP-1 --auto --right-of HDMI-0 &
 
 # status bar
 /home/reavey/.config/dwm-bar/dwm_bar.sh &
