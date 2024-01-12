@@ -4,4 +4,5 @@ telescope.setup({
 	defaults = {
 		borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
 	},
+
 })
