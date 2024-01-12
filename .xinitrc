@@ -37,10 +37,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 
 # Display Resolution
-xrandr --output HDMI-0 --mode 1920x1080 &
+xrandr --output HDMI-0 --mode 1920x1080 --primary &
 xrandr --output DP-1 --mode 1920x1080 &
-
-# Move 2nd monitor to left
 xrandr --output DP-1 --auto --right-of HDMI-0 &
 
 # status bar

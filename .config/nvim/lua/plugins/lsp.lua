@@ -88,8 +88,19 @@ lspconfig.lua_ls.setup {
 	}
 }
 
+lspconfig.clangd.setup {
+	on_attach = on_attach,
+	flags = {
+		allow_incremental_sync = false,
+		debounce_text_changes = 150,
+	},
+	filetypes = { "c", "cpp", "objc", "objcpp" },
+	root_dir = require('lspconfig').util.root_pattern("src"),
+	init_option = { fallbackFlags = { "-std=c++2a" } },
+}
+
 -- Use a loop to conveniently call 'setup' on multiple servers and
-local servers = { 'pyright', 'clangd', 'jdtls', 'tsserver', 'rust_analyzer', 'html' }
+local servers = { 'pyright', 'jdtls', 'tsserver', 'rust_analyzer', 'html' }
 for _, lsp in pairs(servers) do
 	lspconfig[lsp].setup {
 		on_attach = on_attach,
