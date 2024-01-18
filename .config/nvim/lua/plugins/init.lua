@@ -38,4 +38,6 @@ require("lazy").setup({
 	'nvim-lualine/lualine.nvim',
 	'tpope/vim-fugitive',
 	'dstein64/vim-startuptime',
+	'tikhomirov/vim-glsl',
+	'airblade/vim-rooter',
 })
