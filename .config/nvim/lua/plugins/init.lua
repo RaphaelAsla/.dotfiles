@@ -14,30 +14,30 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{
-		'https://gitlab.com/madyanov/gruber.vim',
+		"https://gitlab.com/madyanov/gruber.vim",
 		lazy = false,
 		priority = 1000
 	},
 	{
-		'nvim-telescope/telescope.nvim',
-		'nvim-lua/plenary.nvim',
+		"nvim-telescope/telescope.nvim",
+		"nvim-lua/plenary.nvim",
 	},
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
-			'hrsh7th/cmp-nvim-lsp',
-			'hrsh7th/cmp-cmdline',
-			'hrsh7th/cmp-buffer',
-			'hrsh7th/cmp-path',
-			'hrsh7th/cmp-nvim-lsp-signature-help',
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-cmdline",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-nvim-lsp-signature-help",
 		},
 	},
-	'https://github.com/alvan/vim-closetag',
-	'neovim/nvim-lspconfig',
-	'nvim-lua/lsp-status.nvim',
-	'nvim-lualine/lualine.nvim',
-	'tpope/vim-fugitive',
-	'dstein64/vim-startuptime',
-	'tikhomirov/vim-glsl',
-	'airblade/vim-rooter',
+	"https://github.com/alvan/vim-closetag",
+	"neovim/nvim-lspconfig",
+	"nvim-lua/lsp-status.nvim",
+	"nvim-lualine/lualine.nvim",
+	"tpope/vim-fugitive",
+	"dstein64/vim-startuptime",
+	"tikhomirov/vim-glsl",
+	"airblade/vim-rooter",
 })
