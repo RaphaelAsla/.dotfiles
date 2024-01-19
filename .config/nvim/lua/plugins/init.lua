@@ -14,7 +14,8 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{
-		"https://gitlab.com/madyanov/gruber.vim",
+		"madyanov/gruber.vim",
+		"morhetz/gruvbox",
 		lazy = false,
 		priority = 1000
 	},
