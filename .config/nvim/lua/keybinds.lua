@@ -11,7 +11,8 @@ xnoremap <expr> p 'pgv"'.v:register.'y`>'
 xnoremap <expr> P 'Pgv"'.v:register.'y`>'
 
 "Delete without copying
-map <leader>d "_d
+nnoremap d "_d
+vnoremap d "_d
 
 "Clear highlighted text
 nnoremap <silent><esc> :noh<CR>
@@ -72,10 +73,8 @@ vnoremap $q <esc>`>a'<esc>`<i'<esc>
 vnoremap $e <esc>`>a`<esc>`<i`<esc>
 
 "Move line
-nnoremap <leader>j :m .+1<CR>==
-nnoremap <leader>k :m .-2<CR>==
-vnoremap <leader>j :m '>+1<CR>gv=gv
-vnoremap <leader>k :m '<-2<CR>gv=gv
+vnoremap J :m '>+1<CR>gv=gv
+vnoremap K :m '<-2<CR>gv=gv
 
 "Opens a new tab with the current buffer's path
 "Super useful when editing files in the same directory
