@@ -48,15 +48,15 @@ opt.listchars:append({ tab = "···", trail = "·", space = "·" })
 opt.termguicolors = true
 g.netrw_banner = 0
 
---g.gruvbox_contrast_dark = "hard"
-cmd("colorscheme gruber")
-cmd("highlight! CursorLineNr guifg=#ffd700")
-cmd("highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough")
-cmd("highlight! CmpItemAbbrMatch guifg=#87d75f guibg=NONE")
-cmd("highlight! link CmpItemAbbrMatchFuzzy CmpItemAbbrMatch")
-cmd("highlight! CmpItemMenu guifg=#afafd7")
-cmd("highlight! CmpItemKind guifg=#ffd700 guibg=NONE")
-cmd("highlight! PMenu guifg=#NONE guibg=#2e2e2e")
+opt.background = "dark"
+cmd("colorscheme oxocarbon")
+--cmd("highlight! CursorLineNr guifg=#ffd700")
+--cmd("highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough")
+--cmd("highlight! CmpItemAbbrMatch guifg=#87d75f guibg=NONE")
+--cmd("highlight! link CmpItemAbbrMatchFuzzy CmpItemAbbrMatch")
+--cmd("highlight! CmpItemMenu guifg=#afafd7")
+--cmd("highlight! CmpItemKind guifg=#ffd700 guibg=NONE")
+--cmd("highlight! PMenu guifg=#NONE guibg=#2e2e2e")
 
 opt.shortmess = opt.shortmess + {
 	A = true, -- don't give the "ATTENTION" message when an existing swap file is found.

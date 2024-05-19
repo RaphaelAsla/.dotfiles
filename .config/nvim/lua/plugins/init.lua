@@ -15,13 +15,9 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	{
 		"madyanov/gruber.vim",
+		commit = "c2726b01",
 		lazy = false,
 		priority = 1000
-	},
-	{
-		--"ggandor/leap.nvim",
-		"nvim-telescope/telescope.nvim",
-		"nvim-lua/plenary.nvim",
 	},
 	{
 		"hrsh7th/nvim-cmp",
@@ -33,6 +29,9 @@ require("lazy").setup({
 			"hrsh7th/cmp-nvim-lsp-signature-help",
 		},
 	},
+	"nyoom-engineering/oxocarbon.nvim",
+	"nvim-telescope/telescope.nvim",
+	"nvim-lua/plenary.nvim",
 	"alvan/vim-closetag",
 	"neovim/nvim-lspconfig",
 	"nvim-lua/lsp-status.nvim",
@@ -42,5 +41,3 @@ require("lazy").setup({
 	"tikhomirov/vim-glsl",
 	"airblade/vim-rooter",
 })
-
---require('leap').create_default_mappings()
