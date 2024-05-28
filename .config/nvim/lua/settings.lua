@@ -78,12 +78,10 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 	callback = function()
 		vim.lsp.buf.format {
 			timeout_ms = 2000,
-			filter = function(clients)
-				return vim.tbl_filter(function(client)
-					return pcall(function(_client)
-						return _client.config.settings.autoFixOnSave or false
-					end, client) or false
-				end, clients)
+			filter = function(client)
+				return pcall(function(_client)
+					return _client.config.settings.autoFixOnSave or false
+				end, client) or false
 			end
 		}
 	end
