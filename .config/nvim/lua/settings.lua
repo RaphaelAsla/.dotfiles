@@ -70,3 +70,21 @@ vim.api.nvim_command [[
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
     au FocusGained,BufEnter * checktime
 ]]
+
+vim.api.nvim_create_augroup('LspFormatting', { clear = true })
+vim.api.nvim_create_autocmd('BufWritePre', {
+	pattern = '*',
+	group = 'LspFormatting',
+	callback = function()
+		vim.lsp.buf.format {
+			timeout_ms = 2000,
+			filter = function(clients)
+				return vim.tbl_filter(function(client)
+					return pcall(function(_client)
+						return _client.config.settings.autoFixOnSave or false
+					end, client) or false
+				end, clients)
+			end
+		}
+	end
+})
