@@ -40,5 +40,4 @@ require("lazy").setup({
 	"dstein64/vim-startuptime",
 	"tikhomirov/vim-glsl",
 	"airblade/vim-rooter",
-	"jose-elias-alvarez/null-ls.nvim",
 })
