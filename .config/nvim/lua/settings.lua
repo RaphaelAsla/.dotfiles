@@ -50,6 +50,8 @@ g.netrw_banner = 0
 
 opt.background = "dark"
 cmd("colorscheme oxocarbon")
+vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 --cmd("highlight! CursorLineNr guifg=#ffd700")
 --cmd("highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough")
 --cmd("highlight! CmpItemAbbrMatch guifg=#87d75f guibg=NONE")
