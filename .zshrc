@@ -16,6 +16,12 @@ base16_circus
 #path to my oh-my-zsh installation.
 export ZSH="/home/reavey/.oh-my-zsh"
 
+#composer
+export PATH="$HOME/.config/composer/vendor/bin:$PATH"
+
+#npm global path
+export PATH=~/.npm-global/bin:$PATH
+
 #ranger stuff
 export VISUAL=nvim
 alias ranger='ranger --choosedir=$HOME/.rangerdir; LASTDIR=`cat $HOME/.rangerdir`; cd "$LASTDIR"'

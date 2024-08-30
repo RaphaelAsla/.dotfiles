@@ -1,4 +1,4 @@
-vim.api.nvim_exec([[
+vim.api.nvim_exec2([[
 "Exit inssert mode
 inoremap jj <ESC>
 
@@ -128,4 +128,4 @@ elseif &filetype == 'asm'
 	exec "!./%<"
 endif
 endfunc
-]], false)
+]], {})

@@ -31,12 +31,12 @@ local kind_icons = {
 cmp.setup({
 	preselect = cmp.PreselectMode.None,
 	mapping = {
-			['<C-k>'] = cmp.mapping.scroll_docs(-4),
-			['<C-j>'] = cmp.mapping.scroll_docs(4),
-			['<C-e>'] = cmp.mapping.abort(),
-			["<tab>"] = cmp.mapping.select_next_item(),
-			["<S-tab>"] = cmp.mapping.select_prev_item(),
-			['<CR>'] = cmp.mapping.confirm({
+		['<C-k>'] = cmp.mapping.scroll_docs(-4),
+		['<C-j>'] = cmp.mapping.scroll_docs(4),
+		['<C-e>'] = cmp.mapping.abort(),
+		["<tab>"] = cmp.mapping.select_next_item(),
+		["<S-tab>"] = cmp.mapping.select_prev_item(),
+		['<CR>'] = cmp.mapping.confirm({
 			behavior = cmp.ConfirmBehavior.Replace,
 			select = false
 		}),
@@ -51,9 +51,9 @@ cmp.setup({
 			vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
 			-- Source
 			vim_item.menu = ({
-					buffer = "[Buffer]",
-					nvim_lsp = "[LSP]",
-				})[entry.source.name]
+				buffer = "[Buffer]",
+				nvim_lsp = "[LSP]",
+			})[entry.source.name]
 			return vim_item
 		end
 	},

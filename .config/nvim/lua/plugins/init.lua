@@ -1,3 +1,4 @@
+-- bootstrap lazy
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -13,12 +14,6 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	{
-		"madyanov/gruber.vim",
-		commit = "c2726b01",
-		lazy = false,
-		priority = 1000
-	},
 	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
@@ -38,6 +33,7 @@ require("lazy").setup({
 	"nvim-lualine/lualine.nvim",
 	"tpope/vim-fugitive",
 	"dstein64/vim-startuptime",
-	"tikhomirov/vim-glsl",
 	"airblade/vim-rooter",
+	"nvim-treesitter/nvim-treesitter",
+	"tree-sitter/tree-sitter",
 })
