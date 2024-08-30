@@ -9,7 +9,7 @@ cmd("syntax on")
 cmd("filetype plugin indent on")
 
 g.mapleader = ","
-o.guicursor = 'i-r-cr-ci:hor40'
+o.guicursor = 'n-v-c-sm:blcok'
 opt.termguicolors = true
 opt.mouse = "a"
 opt.cinkeys:remove({ ':' })
@@ -48,17 +48,9 @@ opt.listchars:append({ tab = "···", trail = "·", space = "·" })
 opt.termguicolors = true
 g.netrw_banner = 0
 
-opt.background = "dark"
 cmd("colorscheme oxocarbon")
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
---cmd("highlight! CursorLineNr guifg=#ffd700")
---cmd("highlight! CmpItemAbbrDeprecated guibg=NONE gui=strikethrough")
---cmd("highlight! CmpItemAbbrMatch guifg=#87d75f guibg=NONE")
---cmd("highlight! link CmpItemAbbrMatchFuzzy CmpItemAbbrMatch")
---cmd("highlight! CmpItemMenu guifg=#afafd7")
---cmd("highlight! CmpItemKind guifg=#ffd700 guibg=NONE")
---cmd("highlight! PMenu guifg=#NONE guibg=#2e2e2e")
 
 opt.shortmess = opt.shortmess + {
 	A = true, -- don't give the "ATTENTION" message when an existing swap file is found.
@@ -68,9 +60,15 @@ opt.shortmess = opt.shortmess + {
 	m = true, -- use "[+]" instead of "[Modified]"
 }
 
+--Cursor stays in the same position after open/close a file
 vim.api.nvim_command [[
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
     au FocusGained,BufEnter * checktime
+]]
+
+--Make .blade.php files be recognized as html files so highlighting lsp can work with html lang server
+vim.api.nvim_command [[
+autocmd BufNewFile,BufRead *.blade.php setlocal ft=html
 ]]
 
 vim.api.nvim_create_augroup('LspFormatting', { clear = true })
