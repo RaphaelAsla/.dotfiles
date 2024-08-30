@@ -66,7 +66,7 @@ vim.api.nvim_command [[
     au FocusGained,BufEnter * checktime
 ]]
 
---Make .blade.php files be recognized as html files so highlighting lsp can work with html lang server
+--Make .blade.php files be recognized as html files so html lsp based highlighting can work
 vim.api.nvim_command [[
 autocmd BufNewFile,BufRead *.blade.php setlocal ft=html
 ]]
