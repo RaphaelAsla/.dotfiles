@@ -8,7 +8,12 @@ opacity = 0.8
 normal = {family = "Iosevka", style = "Regular"}
 size = 13
 [cursor]
+style = {shape = "Block", blinking = "On"}
+blink_timeout = 0
+blink_interval = 750
 unfocused_hollow = false
+[mouse]
+hide_when_typing = true
 [colors]
 cursor = {text = "0x000000", cursor = "0xFFFFFF"}
 [env]
