@@ -1,0 +1,15 @@
+import = [
+	"~/.config/alacritty/oxocarbon.toml"
+]
+
+[window]
+opacity = 0.8
+[font]
+normal = {family = "Iosevka", style = "Regular"}
+size = 13
+[cursor]
+unfocused_hollow = false
+[colors]
+cursor = {text = "0x000000", cursor = "0xFFFFFF"}
+[env]
+TERM = "xterm-256color"
