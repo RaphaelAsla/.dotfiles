@@ -45,6 +45,14 @@ nnoremap <leader>to :tabonly<cr>
 nnoremap <leader>tc :tabclose<cr>
 nnoremap <leader>tm :tabmove
 
+"Place cursor in middle when moving half a page
+nnoremap <C-d> <C-d>zz
+nnoremap <C-u> <C-u>zz
+
+"Place cursor in middle when searching between matches
+nnoremap n nzz
+nnoremap N Nzz
+
 "Telescope
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope git_files<cr>
@@ -83,6 +91,7 @@ map <leader>te :tabedit <C-r>=expand("%:p:h")<cr>/
 "Get current dir
 nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 
+"Compile and run or build and run current project (the build functionallity is just regex so its not perfect)
 map <F5> :call CompileRun()<CR>
 map <F6> :call BuildRun()<CR>
 
