@@ -41,10 +41,7 @@ cmp.setup({
 			select = false
 		}),
 	},
-	window = {
-		completion = cmp.config.window.bordered({ border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" } }),
-		documentation = cmp.config.window.bordered({ border = { "┌", "─", "┐", "│", "┘", "─", "└", "│" } }),
-	},
+
 	formatting = {
 		format = function(entry, vim_item)
 			-- Kind icons

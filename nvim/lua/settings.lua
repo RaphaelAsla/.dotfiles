@@ -52,8 +52,14 @@ vim.opt.background = "dark"
 vim.cmd.colorscheme("oxocarbon")
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+vim.api.nvim_set_hl(0, "FloatBorder", { fg = "none" })
+vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { bg = "none", strikethrough = true })
+vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = "#be95ff", bg = "none" })
+vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { link = "CmpItemAbbrMatch" })
+vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = "#be95ff" })
 
 opt.shortmess = opt.shortmess + {
 	A = true, -- don't give the "ATTENTION" message when an existing swap file is found.
@@ -74,6 +80,7 @@ vim.api.nvim_command [[
 autocmd BufNewFile,BufRead *.blade.php setlocal ft=html
 ]]
 
+--Formating on save
 vim.api.nvim_create_augroup('LspFormatting', { clear = true })
 vim.api.nvim_create_autocmd('BufWritePre', {
 	pattern = '*',
