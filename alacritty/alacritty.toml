@@ -1,6 +1,3 @@
-import = [
-	"~/.config/alacritty/oxocarbon.toml"
-]
 
 [window]
 opacity = 0.8
@@ -18,3 +15,8 @@ hide_when_typing = true
 cursor = {text = "0x000000", cursor = "0xFFFFFF"}
 [env]
 TERM = "xterm-256color"
+
+[general]
+import = [
+	"~/.config/alacritty/oxocarbon.toml"
+]

@@ -23,7 +23,7 @@ IndentWidth: '4'
 TabWidth: '4'
 KeepEmptyLinesAtTheStartOfBlocks: 'false'
 MaxEmptyLinesToKeep: '1'
-NamespaceIndentation: None
+NamespaceIndentation: All
 SortIncludes: 'true'
 SortUsingDeclarations: 'true'
 DerivePointerAlignment: false
