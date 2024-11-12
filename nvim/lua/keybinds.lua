@@ -1,6 +1,6 @@
 vim.api.nvim_exec2([[
 "Exit inssert mode
-inoremap jj <ESC>
+inoremap jj <esc>
 
 "Indent left/right and re-select
 vnoremap < <gv
@@ -13,31 +13,37 @@ xnoremap <expr> P 'Pgv"'.v:register.'y`>'
 "Delete without copying
 nnoremap d "_d
 vnoremap d "_d
+vnoremap D d
+nnoremap D D
 
 "Clear highlighted text
-nnoremap <silent><esc> :noh<CR>
+nnoremap <silent><esc> :noh<cr>
 
 "Go to start  of line
 map 0 ^
+
+"Copilot no tab key
+imap <silent><script><expr> <c-l> copilot#Accept("\<cr>")
 
 "Write sudo files
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
 "Open close brackets
-inoremap {<CR> {<CR>}<ESC>O
-inoremap {;<CR> {<CR>};<ESC>O
+inoremap {<cr> {<cr>}<esc>O
+inoremap {;<cr> {<cr>};<esc>O
 
-"Open neovim config
-nnoremap <leader>e :tabnew ~/.config/nvim/lua<CR>
+"Open neovim in Telescope
+nnoremap <silent><leader>eff :cd ~/.config/nvim/lua \| lua require('telescope.builtin').find_files({ cwd = vim.fn.getcwd() })<cr><esc>
+nnoremap <silent><leader>efw :cd ~/.config/nvim/lua \| lua require('telescope.builtin').live_grep({ cwd = vim.fn.getcwd() })<cr>
 
 "Search and replace
 nnoremap <leader>s :%s/
 
 "Explorer
-nnoremap <leader><tab> :Explore <CR>
+nnoremap <leader><tab> :Explore <cr>
 
 "Disable recording
-map q <Nop>
+"map q <nop>
 
 "Tabs
 nnoremap <leader>tn :tabnew<cr>
@@ -46,8 +52,8 @@ nnoremap <leader>tc :tabclose<cr>
 nnoremap <leader>tm :tabmove
 
 "Place cursor in middle when moving half a page
-nnoremap <C-d> <C-d>zz
-nnoremap <C-u> <C-u>zz
+nnoremap <c-d> <c-d>zz
+nnoremap <c-u> <c-u>zz
 
 "Place cursor in middle when searching between matches
 nnoremap n nzz
@@ -81,19 +87,23 @@ vnoremap $q <esc>`>a'<esc>`<i'<esc>
 vnoremap $e <esc>`>a`<esc>`<i`<esc>
 
 "Move line
-vnoremap J :m '>+1<CR>gv=gv
-vnoremap K :m '<-2<CR>gv=gv
+vnoremap J :m '>+1<cr>gv=gv
+vnoremap K :m '<-2<cr>gv=gv
 
 "Opens a new tab with the current buffer's path
 "Super useful when editing files in the same directory
-map <leader>te :tabedit <C-r>=expand("%:p:h")<cr>/
+map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+
+"Splits
+nnoremap <leader>vs :vsp <c-r>=expand("%:p:h")<cr>/
+nnoremap <leader>hs :sp <c-r>=expand("%:p:h")<cr>/
 
 "Get current dir
 nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 "Compile and run or build and run current project (the build functionallity is just regex so its not perfect)
-map <F5> :call CompileRun()<CR>
-map <F6> :call BuildRun()<CR>
+map <f5> :call CompileRun()<cr>
+map <f6> :call BuildRun()<cr>
 
 func! BuildRun()
 exec "w"

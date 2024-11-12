@@ -8,6 +8,9 @@ local o = vim.o
 cmd("syntax on")
 cmd("filetype plugin indent on")
 
+cmd(
+	"set langmap=ΑA,ΒB,ΨC,ΔD,ΕE,ΦF,ΓG,ΗH,ΙI,ΞJ,ΚK,ΛL,ΜM,ΝN,ΟO,ΠP,QQ,ΡR,ΣS,ΤT,ΘU,ΩV,WW,ΧX,ΥY,ΖZ,αa,βb,ψc,δd,εe,φf,γg,ηh,ιi,ξj,κk,λl,μm,νn,οo,πp,qq,ρr,σs,τt,θu,ωv,ςw,χx,υy,ζz")
+
 g.mapleader = ","
 o.guicursor = ""
 opt.termguicolors = true

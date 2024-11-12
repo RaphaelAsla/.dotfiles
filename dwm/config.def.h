@@ -84,8 +84,8 @@ static const char* soundDown[] = {"volume", "down", NULL};
 
 static Key keys[] = {
     /* modifier                     key        function        argument */
-    {0, 0x1008ff13, spawn, {.v = soundUp}},
-    {0, 0x1008ff11, spawn, {.v = soundDown}},
+    {0, 0x1008ff16, spawn, {.v = soundDown}},
+    {0, 0x1008ff17, spawn, {.v = soundUp}},
     {0, XK_Print, spawn, {.v = screenshot}},
     {MODKEY, XK_p, spawn, {.v = roficmd}},
     {MODKEY | ShiftMask, XK_Return, spawn, {.v = termcmd}},
