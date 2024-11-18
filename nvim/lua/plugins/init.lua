@@ -57,7 +57,6 @@ require("lazy").setup({
 	},
 	"nyoom-engineering/oxocarbon.nvim",
 	"nvim-telescope/telescope.nvim",
-	"nvim-lua/plenary.nvim",
 	"alvan/vim-closetag",
 	"neovim/nvim-lspconfig",
 	"nvim-lua/lsp-status.nvim",
@@ -67,5 +66,13 @@ require("lazy").setup({
 	"airblade/vim-rooter",
 	"nvim-treesitter/nvim-treesitter",
 	"tree-sitter/tree-sitter",
-	"github/copilot.vim",
+	{
+		"blazkowolf/gruber-darker.nvim",
+		lazy = false, -- make sure we load this during startup if it is your main colorscheme
+		priority = 1000, -- make sure to load this before all the other start plugins
+		config = function()
+			-- load the colorscheme here
+			vim.cmd([[colorscheme gruber-darker]])
+		end,
+	}
 })
