@@ -19,11 +19,11 @@ opt.cinkeys:remove({ ':' })
 opt.signcolumn = "yes:1"
 opt.cmdheight = 1
 opt.updatetime = 500
-opt.completeopt:append('menuone,noinsert,noselect')
-opt.clipboard = 'unnamedplus'
+opt.completeopt:append("menuone,noinsert,noselect")
+opt.clipboard = "unnamedplus"
 opt.timeoutlen = 500
 opt.wrap = false
-opt.ww:append('<,>,h,l,[,]')
+opt.ww:append("<,>,h,l,[,]")
 opt.nu = true
 opt.rnu = true
 opt.showmode = false
@@ -33,11 +33,11 @@ opt.copyindent = true
 opt.incsearch = true
 opt.so = 10
 opt.siso = 5
-opt.cursorline = false
+opt.cursorline = true
 opt.autoread = true
 opt.history = 500
 opt.undofile = true
-opt.undodir = vim.fn.stdpath('cache') .. '/NvimUndofile'
+opt.undodir = vim.fn.stdpath("cache") .. "/NvimUndofile"
 opt.splitright = true
 opt.tabstop = 4
 opt.softtabstop = 4
@@ -51,18 +51,19 @@ opt.listchars:append({ tab = "···", trail = "·", space = "·" })
 opt.termguicolors = true
 g.netrw_banner = 0
 
-vim.opt.background = "dark"
-vim.cmd.colorscheme("oxocarbon")
+--transparency for any theme
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 vim.api.nvim_set_hl(0, "FloatBorder", { fg = "none" })
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
 vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { bg = "none", strikethrough = true })
-vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = "#be95ff", bg = "none" })
-vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { link = "CmpItemAbbrMatch" })
-vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = "#be95ff" })
+--gruber specific
+vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#FFDD33", bold = true })
+vim.api.nvim_set_hl(0, "CursorLine", { bg = "none" })
+vim.api.nvim_set_hl(0, "Cursor", { fg = "#000000", bg = "#FFDD33" })
+vim.api.nvim_set_hl(0, "lCursor", { fg = "#000000", bg = "#FFDD33" })
+vim.opt.guicursor = "n-v-c:block-Cursor/lCursor,i-ci-ve:block-Cursor/lCursor,r-cr:block-Cursor/lCursor"
 
 opt.shortmess = opt.shortmess + {
 	A = true, -- don't give the "ATTENTION" message when an existing swap file is found.
@@ -84,10 +85,10 @@ autocmd BufNewFile,BufRead *.blade.php setlocal ft=html
 ]]
 
 --Formating on save
-vim.api.nvim_create_augroup('LspFormatting', { clear = true })
-vim.api.nvim_create_autocmd('BufWritePre', {
-	pattern = '*',
-	group = 'LspFormatting',
+vim.api.nvim_create_augroup("LspFormatting", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePre", {
+	pattern = "*",
+	group = "LspFormatting",
 	callback = function()
 		vim.lsp.buf.format {
 			timeout_ms = 2000,
