@@ -55,7 +55,6 @@ require("lazy").setup({
 			vim.g.maplocalleader = ","
 		end
 	},
-	"nyoom-engineering/oxocarbon.nvim",
 	"nvim-telescope/telescope.nvim",
 	"alvan/vim-closetag",
 	"neovim/nvim-lspconfig",
@@ -67,6 +66,7 @@ require("lazy").setup({
 	"nvim-treesitter/nvim-treesitter",
 	"tree-sitter/tree-sitter",
 	{
+		--"nyoom-engineering/oxocarbon.nvim",
 		"blazkowolf/gruber-darker.nvim",
 		lazy = false, -- make sure we load this during startup if it is your main colorscheme
 		priority = 1000, -- make sure to load this before all the other start plugins

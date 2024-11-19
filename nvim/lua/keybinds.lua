@@ -82,7 +82,7 @@ nnoremap <leader>0 :tablast<cr>
 vnoremap $1 <esc>`>a)<esc>`<i(<esc>
 vnoremap $2 <esc>`>a]<esc>`<i[<esc>
 vnoremap $3 <esc>`>a}<esc>`<i{<esc>
-vnoremap $$ <esc>`>a"<esc>`<i"<esc>
+vnoremap $$ <esc>`>a$<esc>`<i$<esc>
 vnoremap $q <esc>`>a'<esc>`<i'<esc>
 vnoremap $e <esc>`>a`<esc>`<i`<esc>
 
