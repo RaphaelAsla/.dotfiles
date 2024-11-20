@@ -1,6 +1,6 @@
 
 [window]
-opacity = 0.8
+opacity = 0.96
 [font]
 normal = {family = "Iosevka", style = "Regular"}
 size = 13
@@ -12,7 +12,7 @@ unfocused_hollow = false
 [mouse]
 hide_when_typing = true
 [colors]
-cursor = {text = "0x000000", cursor = "0xFFFFFF"}
+cursor = {text = "0x000000", cursor = "#ff7eb6"}
 [env]
 TERM = "xterm-256color"
 

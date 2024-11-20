@@ -56,14 +56,17 @@ vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 vim.api.nvim_set_hl(0, "FloatBorder", { fg = "none" })
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
+vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
 vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { bg = "none", strikethrough = true })
---gruber specific
-vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#FFDD33", bold = true })
+--oxocarbon specific
+vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { bg = "none", strikethrough = true })
+vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = "#be95ff", bg = "none" })
+vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { link = "CmpItemAbbrMatch" })
+vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = "#be95ff" })
+vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ff7eb6", bold = true })
 vim.api.nvim_set_hl(0, "CursorLine", { bg = "none" })
-vim.api.nvim_set_hl(0, "Cursor", { fg = "#000000", bg = "#FFDD33" })
-vim.api.nvim_set_hl(0, "lCursor", { fg = "#000000", bg = "#FFDD33" })
-vim.opt.guicursor = "n-v-c:block-Cursor/lCursor,i-ci-ve:block-Cursor/lCursor,r-cr:block-Cursor/lCursor"
+
 
 opt.shortmess = opt.shortmess + {
 	A = true, -- don't give the "ATTENTION" message when an existing swap file is found.
