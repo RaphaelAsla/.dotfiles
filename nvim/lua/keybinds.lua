@@ -23,7 +23,18 @@ nnoremap <silent><esc> :noh<cr>
 map 0 ^
 
 "Copilot no tab key
-imap <silent><script><expr> <c-l> copilot#Accept("\<cr>")
+"imap <silent><script><expr> <c-l> copilot#Accept("\<cr>")
+
+" Expand snippet with <Tab> in insert mode
+imap <silent> <C-l> <C-R>=UltiSnips#ExpandSnippet()<CR>
+
+" Jump forward with <C-b> in insert mode and select mode
+imap <silent> <C-b> <C-R>=UltiSnips#JumpForwards()<CR>
+smap <silent> <C-b> <C-R>=UltiSnips#JumpForwards()<CR>
+
+" Jump backward with <C-z> in insert mode and select mode
+imap <silent> <C-z> <C-R>=UltiSnips#JumpBackwards()<CR>
+smap <silent> <C-z> <C-R>=UltiSnips#JumpBackwards()<CR>
 
 "Write sudo files
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
