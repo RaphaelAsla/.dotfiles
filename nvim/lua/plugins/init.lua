@@ -60,7 +60,6 @@ require("lazy").setup({
 	"alvan/vim-closetag",
 	"neovim/nvim-lspconfig",
 	"nvim-lua/lsp-status.nvim",
-	"nvim-lualine/lualine.nvim",
 	"tpope/vim-fugitive",
 	"dstein64/vim-startuptime",
 	"airblade/vim-rooter",
@@ -68,6 +67,10 @@ require("lazy").setup({
 	"tree-sitter/tree-sitter",
 	"SirVer/ultisnips",
 	"honza/vim-snippets",
+	{
+		"nvim-lualine/lualine.nvim",
+		dependencies = { 'nvim-tree/nvim-web-devicons' }
+	},
 	{
 		"nyoom-engineering/oxocarbon.nvim",
 		--"blazkowolf/gruber-darker.nvim",
