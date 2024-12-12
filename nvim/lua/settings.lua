@@ -12,6 +12,7 @@ cmd(
 	"set langmap=ΑA,ΒB,ΨC,ΔD,ΕE,ΦF,ΓG,ΗH,ΙI,ΞJ,ΚK,ΛL,ΜM,ΝN,ΟO,ΠP,QQ,ΡR,ΣS,ΤT,ΘU,ΩV,WW,ΧX,ΥY,ΖZ,αa,βb,ψc,δd,εe,φf,γg,ηh,ιi,ξj,κk,λl,μm,νn,οo,πp,qq,ρr,σs,τt,θu,ωv,ςw,χx,υy,ζz")
 
 g.mapleader = ","
+g.netrw_banner = 0
 o.guicursor = ""
 opt.termguicolors = true
 opt.mouse = "a"
@@ -49,7 +50,7 @@ opt.swapfile = false
 opt.list = true
 opt.listchars:append({ tab = "···", trail = "·", space = "·" })
 opt.termguicolors = true
-g.netrw_banner = 0
+opt.makeprg = "make -C build run"
 
 --transparency for any theme
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -92,7 +93,7 @@ vim.api.nvim_command [[
 
 --Make .blade.php files be recognized as html files so html lsp based highlighting can work
 vim.api.nvim_command [[
-autocmd BufNewFile,BufRead *.blade.php setlocal ft=html
+	autocmd BufNewFile,BufRead *.blade.php setlocal ft=html
 ]]
 
 --Formating on save
