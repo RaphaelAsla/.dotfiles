@@ -81,5 +81,17 @@ require("lazy").setup({
 			vim.opt.background = "dark"
 			vim.cmd([[colorscheme oxocarbon]])
 		end,
+	},
+	{
+		"jackMort/ChatGPT.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("chatgpt").setup()
+		end,
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim"
+		}
 	}
 })
