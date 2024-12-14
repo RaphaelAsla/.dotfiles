@@ -24,7 +24,7 @@ nnoremap <silent><esc> :noh<cr>
 map 0 ^
 
 "Expand snippet with <C-l> in insert mode
-inoremap <silent> <C-l> <C-R>=UltiSnips#ExpandSnippet()<CR>
+inoremap <silent> <C-l> <C-R>UltiSnips#ExpandSnippet()<CR>
 
 "Write to sudo files
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
