@@ -228,8 +228,12 @@ client.urgent            $peach    $base $peach $overlay0  $peach
 client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base
 
+# no border and title
+default_border none
+for_window [class="^."] border pixel 5
+
 # title to the center of the window
-title_align center
+#title_align center
 
 # gaps
 gaps inner 10
