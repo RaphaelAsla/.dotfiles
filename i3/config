@@ -112,6 +112,22 @@ bindsym $mod+a focus parent
 # focus the child container
 #bindsym $mod+d focus child
 
+# monitors
+set $monitor_left "DP-1"
+set $monitor_right "HDMI-0"
+
+# set workspaces per monitor
+workspace 1 output $monitor_right
+workspace 2 output $monitor_right
+workspace 3 output $monitor_right
+workspace 4 output $monitor_right
+workspace 5 output $monitor_right
+workspace 6 output $monitor_left
+workspace 7 output $monitor_left
+workspace 8 output $monitor_left
+workspace 9 output $monitor_left
+workspace 10 output $monitor_left
+
 # switch to workspace
 bindsym $mod+1 workspace number 1
 bindsym $mod+2 workspace number 2
@@ -176,6 +192,17 @@ bar {
         status_command i3status
 }
 
-# Custom keybinds
+# Custom keybinds #
 
+# rofi
 bindsym $mod+p exec rofi -show drun -show-icons
+
+# screenshot
+bindsym Print exec flameshot gui
+
+# alt-tab between workspaces
+bindsym $mod+Tab exec --no-startup-id i3-msg workspace back_and_forth
+
+# move qurrent window to second monitor
+bindsym $mod+m move container to output next
+
