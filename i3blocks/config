@@ -1,0 +1,97 @@
+align=center
+separator=false
+color=#f8f8f2
+separator_block_width=15
+markup=pango
+
+[wifi]
+command=iwgetid -r | tr '\n' ' ' && grep $(iwgetid -m | awk '{ printf "%s", $1 }') /proc/net/wireless | awk '{ printf "%i<span color=\"#ff79c6\">%</span>\n", int($3 * 100 / 70) }'
+instance=wlp11s0f3u1
+interval=5
+label=<span color="#ff79c6"><b>Wifi: </b></span>
+border=#ff79c6
+border_top=1
+border_right=0
+border_bottom=0
+border_left=0
+
+[disk]
+command=df -h / | awk 'FNR==2{ printf "%02i<span color=\"#f1fa8c\">G</span>\n", $3 }'
+interval=3
+label=<span color="#f1fa8c"><b>/: </b></span>
+border=#f1fa8c
+border_top=1
+border_right=0
+border_bottom=0
+border_left=0
+
+[home]
+command=du -sh /home | awk '{ printf "%02i<span color=\"#50fa7b\">G</span>\n", $1 }'
+interval=3
+label=<span color="#50fa7b"><b>/home: </b></span>
+border=#50fa7b
+border_top=1
+border_right=0
+border_bottom=0
+border_left=0
+
+[gpu_stats]
+command=nvidia-smi --query-gpu=utilization.gpu --format=csv,noheader,nounits | awk '{ printf "%02i<span color=\"#ffb86c\">%</span>", $0}' && nvidia-smi --query-gpu=temperature.gpu --format=csv,noheader,nounits | awk '{ printf " %i<span color=\"#ffb86c\">°C</span>\n", $0}'
+label=<span color="#ffb86c"><b>GPU: </b></span>
+interval=2
+border=#ffb86c
+border_top=1
+border_right=0
+border_bottom=0
+border_left=0
+
+[cpu_stats]
+command=top -bn1 | grep Cpu | awk '{ printf "%02i<span color=\"#00cc00\">%</span> ", $2 }' && sensors | grep Tctl | awk '{ printf "%i<span color=\"#00cc00\">°C</span>\n", $2 }'
+interval=2
+label=<span color="#00cc00"><b>CPU: </b></span>
+min_width="CPU: 100%"
+border=#00cc00
+border_top=1
+border_right=0
+border_bottom=0
+border_left=0
+
+[memory]
+command=free --giga | awk 'FNR==2{ printf "%i<span color=\"#ff79c6\">G</span>\n", $7 }'
+interval=2
+label=<span color="#ff79c6"><b>MEM: </b></span>
+border=#ff79c6
+border_top=1
+border_right=0
+border_bottom=0
+border_left=0
+
+[time_eet]
+command=TZ=":Europe/Athens" date '+%I : %M %Z' | awk '{ printf "%s<span color=\"#8be9fd\">%s</span>%s<span color=\"#8be9fd\"> %s</span>\n", $1, $2, $3, $4 }'
+interval=1
+label=<span color="#8be9fd"><b>Time: </b></span>
+border=#8be9fd
+border_top=1
+border_right=0
+border_bottom=0
+border_left=0
+
+[date]
+command=LC_ALL="zh_CN.UTF-8" date '+%d %A %B %Y ' | awk '{ printf "%s %s %s %s %s %s\n", $1, $2, $3, $4, $5, $6 }'
+interval=60
+label=<span color="#ff5555"><b>Date: </b></span>
+border=#ff5555
+border_top=1
+border_right=0
+border_bottom=0
+border_left=0
+
+[layout]
+command=case "$(xset -q | grep LED | awk '{ print $10 }')" in "00000000" | "00000001" ) echo "<span color=\"#ffffff\"><b>US</b></span>" ;; "00001000" | "00001001" ) echo "<span color=\"#00bcd4\"><b>GR</b></span>" ;; * ) echo "unknown" ;; esac
+interval=1
+label=<span color="#ffffff"><b>Layout: </b></span>
+border=#ffffff
+border_top=1
+border_right=0
+border_bottom=0
+border_left=0
