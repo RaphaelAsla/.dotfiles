@@ -28,9 +28,9 @@ configuration {
     
     // Colors
     bg: #0f0f23;
-    fg: #cbdfe0;
-    selection: #1E5D6A;
-    transparent: #00000000;
+    fg: #FFFFFF;
+    selection: #4f368a;
+    transparent: false;
 }
 
 window {
