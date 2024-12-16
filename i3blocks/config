@@ -5,7 +5,7 @@ separator_block_width=15
 markup=pango
 
 [focused_window]
-command=xprop -root _NET_ACTIVE_WINDOW | awk -F' ' '{print $5}' | xargs -I {} xprop -id {} WM_CLASS | awk -F'\"' '{print $2}'
+command=xprop -id $(xprop -root _NET_ACTIVE_WINDOW | awk -F' ' '{print $5}') WM_NAME | awk -F '"' '{print $2}'
 interval=1
 label=<span color="#7e82b0"><b>Focus: </b></span>
 border=#7e82b0
