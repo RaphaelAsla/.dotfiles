@@ -87,7 +87,7 @@ border_bottom=0
 border_left=0
 
 [date]
-command=LC_ALL="zh_CN.UTF-8" date '+%d %A %B %Y ' | awk '{ printf "%s %s %s %s %s %s\n", $1, $2, $3, $4, $5, $6 }'
+command=LC_ALL="zh_CN.UTF-8" date '+%d %A %B %Y' | awk '{ printf "%s %s %s %s\n", $1, $2, $3, $4, $5, $6 }'
 interval=60
 label=<span color="#ff5555"><b>Date: </b></span>
 border=#ff5555
