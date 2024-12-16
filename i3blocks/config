@@ -4,9 +4,19 @@ color=#f8f8f2
 separator_block_width=15
 markup=pango
 
+[focused_window]
+command=xprop -root _NET_ACTIVE_WINDOW | awk -F' ' '{print $5}' | xargs -I {} xprop -id {} WM_CLASS | awk -F'\"' '{print $2}'
+interval=1
+label=<span color="#7e82b0"><b>Focus: </b></span>
+border=#7e82b0
+border_top=1
+border_right=0
+border_bottom=0
+border_left=0
+
 [wifi]
 command=iwgetid -r | tr '\n' ' ' && grep $(iwgetid -m | awk '{ printf "%s", $1 }') /proc/net/wireless | awk '{ printf "%i<span color=\"#ff79c6\">%</span>\n", int($3 * 100 / 70) }'
-instance=wlp11s0f3u1
+instance=wlp1s0f0u9
 interval=5
 label=<span color="#ff79c6"><b>Wifi: </b></span>
 border=#ff79c6
