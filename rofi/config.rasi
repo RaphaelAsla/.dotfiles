@@ -27,7 +27,7 @@ configuration {
     vertical-align: 0.5;
     
     // Colors
-    bg: #07181E;
+    bg: #0f0f23;
     fg: #cbdfe0;
     selection: #1E5D6A;
     transparent: #00000000;
@@ -35,6 +35,7 @@ configuration {
 
 window {
     background-color: @bg;
+    width: 35%;
 }
 
 mainbox,inputbar,listview,message,textbox,prompt,entry{
@@ -59,10 +60,11 @@ entry {
 listview {
     border: none;
     scrollbar: false;
+    lines: 6;
 }
 element, message {
-    padding: 5px;
-    border-radius: 0;
+    padding: 8px;
+    border-radius: 50;
 }
 element selected.normal, element normal.active, element selected.active {
     background-color: @selection;

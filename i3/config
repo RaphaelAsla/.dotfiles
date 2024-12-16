@@ -230,7 +230,6 @@ client.background        $base
 
 # no border and title
 default_border none
-#for_window [class="^."] border pixel 5
 
 # title to the center of the window
 title_align center
