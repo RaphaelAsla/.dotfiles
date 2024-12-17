@@ -1,6 +1,6 @@
 # Dotfiles 
 
-My personal (very mesy) dotfiles <br>
+My personal (very messy) dotfiles <br>
 
 I'll add a setup script sooner or later, untill then, I'm sure you can figure it out :P <br>
 
