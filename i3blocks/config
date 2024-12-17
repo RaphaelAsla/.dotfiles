@@ -14,11 +14,10 @@ border_bottom=0
 border_left=0
 
 [wifi]
-command=iwgetid -r | tr '\n' ' ' && grep $(iwgetid -m | awk '{ printf "%s", $1 }') /proc/net/wireless | awk '{ printf "%i<span color=\"#8a8eb7\">%</span>\n", int($3 * 100 / 70) }'
+command=iwgetid -r | tr '\n' ' ' && grep $(iwgetid -m | awk '{ printf "%s", $1 }') /proc/net/wireless | awk '{ printf "%03i<span color=\"#8a8eb7\">%</span>\n", int($3 * 100 / 70) }'
 instance=wlp1s0f0u9
 interval=5
 label=<span color="#8a8eb7"><b>Wifi: </b></span>
-min_width="Wifi: 100%"
 border=#8a8eb7
 border_top=1
 border_right=0

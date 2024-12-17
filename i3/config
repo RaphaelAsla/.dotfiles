@@ -195,6 +195,10 @@ bar {
 		}
 }
 
+exec_always --no-startup-id picom -b --config ~/.config/picom/picom.conf
+exec_always --no-startup-id nitrogen --restore
+exec_always --no-startup-id xset r rate 250 40
+
 # no border and title
 default_border none
 
