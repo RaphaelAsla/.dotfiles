@@ -102,13 +102,14 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*",
 	group = "LspFormatting",
 	callback = function()
-		vim.lsp.buf.format {
+		vim.lsp.buf.format({
 			timeout_ms = 2000,
 			filter = function(client)
-				return pcall(function(_client)
-					return _client.config.settings.autoFixOnSave or false
-				end, client) or false
+				if client.name == "texlab" then --most likely very big documents that take too much time to format
+					return false
+				end
+				return true
 			end
-		}
+		})
 	end
 })

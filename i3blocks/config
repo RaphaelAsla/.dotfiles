@@ -66,7 +66,7 @@ border_bottom=0
 border_left=0
 
 [memory]
-command=free --giga | awk 'FNR==2{ printf "%i<span color=\"#8a8eb7\">G</span>\n", $7 }'
+command=free --giga | awk 'FNR==2{ printf "%i<span color=\"#8a8eb7\">G</span>\n", $3 }'
 interval=2
 label=<span color="#8a8eb7"><b>MEM: </b></span>
 border=#8a8eb7

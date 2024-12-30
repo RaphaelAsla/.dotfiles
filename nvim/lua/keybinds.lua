@@ -24,7 +24,7 @@ nnoremap <silent><esc> :noh<cr>
 map 0 ^
 
 "Expand snippet with <C-l> in insert mode
-inoremap <silent> <C-l> <C-R>UltiSnips#ExpandSnippet()<CR>
+imap <C-l> <cmd>lua vim.fn["UltiSnips#ExpandSnippet"]()<CR>
 
 "Write to sudo files
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
@@ -34,7 +34,7 @@ inoremap {<cr> {<cr>}<esc>O
 inoremap {;<cr> {<cr>};<esc>O
 
 "Open Neovim config settings with Telescope
-nnoremap <silent><leader>eff :cd ~/.config/nvim/lua \| lua require('telescope.builtin').find_files({ cwd = vim.fn.getcwd() })<cr><esc>
+nnoremap <silent><leader>eff :cd ~/.config/nvim/lua \| lua require('telescope.builtin').find_files({ cwd = vim.fn.getcwd() })<cr>
 nnoremap <silent><leader>efw :cd ~/.config/nvim/lua \| lua require('telescope.builtin').live_grep({ cwd = vim.fn.getcwd() })<cr>
 
 "Search and replace
