@@ -32,7 +32,7 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id nm-applet
+#exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioNext exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && $refresh_i3blocks
@@ -127,29 +127,27 @@ workspace 8 output $monitor_left
 workspace 9 output $monitor_left
 workspace 10 output $monitor_left
 
-# switch to workspace
-bindsym $mod+1 workspace number 1
-bindsym $mod+2 workspace number 2
-bindsym $mod+3 workspace number 3
-bindsym $mod+4 workspace number 4
-bindsym $mod+5 workspace number 5
-bindsym $mod+6 workspace number 6
-bindsym $mod+7 workspace number 7
-bindsym $mod+8 workspace number 8
-bindsym $mod+9 workspace number 9
-bindsym $mod+0 workspace number 10
+bindsym $mod+1 exec --no-startup-id ~/.config/i3/bin/change_or_move_to_workspace 0 1
+bindsym $mod+2 exec --no-startup-id ~/.config/i3/bin/change_or_move_to_workspace 0 2
+bindsym $mod+3 exec --no-startup-id ~/.config/i3/bin/change_or_move_to_workspace 0 3
+bindsym $mod+4 exec --no-startup-id ~/.config/i3/bin/change_or_move_to_workspace 0 4
+bindsym $mod+5 exec --no-startup-id ~/.config/i3/bin/change_or_move_to_workspace 0 5
+bindsym $mod+6 exec --no-startup-id ~/.config/i3/bin/change_or_move_to_workspace 0 6
+bindsym $mod+7 exec --no-startup-id ~/.config/i3/bin/change_or_move_to_workspace 0 7
+bindsym $mod+8 exec --no-startup-id ~/.config/i3/bin/change_or_move_to_workspace 0 8
+bindsym $mod+9 exec --no-startup-id ~/.config/i3/bin/change_or_move_to_workspace 0 9
+bindsym $mod+0 exec --no-startup-id ~/.config/i3/bin/change_or_move_to_workspace 0 10
 
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace number 1
-bindsym $mod+Shift+2 move container to workspace number 2
-bindsym $mod+Shift+3 move container to workspace number 3
-bindsym $mod+Shift+4 move container to workspace number 4
-bindsym $mod+Shift+5 move container to workspace number 5
-bindsym $mod+Shift+6 move container to workspace number 6
-bindsym $mod+Shift+7 move container to workspace number 7
-bindsym $mod+Shift+8 move container to workspace number 8
-bindsym $mod+Shift+9 move container to workspace number 9
-bindsym $mod+Shift+0 move container to workspace number 10
+bindsym $mod+Shift+1 exec --no-startup-id ~/.config/i3/bin/change_or_move_to_workspace 1 1
+bindsym $mod+Shift+2 exec --no-startup-id ~/.config/i3/bin/change_or_move_to_workspace 1 2
+bindsym $mod+Shift+3 exec --no-startup-id ~/.config/i3/bin/change_or_move_to_workspace 1 3
+bindsym $mod+Shift+4 exec --no-startup-id ~/.config/i3/bin/change_or_move_to_workspace 1 4
+bindsym $mod+Shift+5 exec --no-startup-id ~/.config/i3/bin/change_or_move_to_workspace 1 5
+bindsym $mod+Shift+6 exec --no-startup-id ~/.config/i3/bin/change_or_move_to_workspace 1 6
+bindsym $mod+Shift+7 exec --no-startup-id ~/.config/i3/bin/change_or_move_to_workspace 1 7
+bindsym $mod+Shift+8 exec --no-startup-id ~/.config/i3/bin/change_or_move_to_workspace 1 8
+bindsym $mod+Shift+9 exec --no-startup-id ~/.config/i3/bin/change_or_move_to_workspace 1 9
+bindsym $mod+Shift+0 exec --no-startup-id ~/.config/i3/bin/change_or_move_to_workspace 1 10
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -214,10 +212,11 @@ bindsym $mod+p exec rofi -show drun -show-icons
 # screenshot
 bindsym Print exec flameshot gui
 
-# alt-tab between workspaces
-bindsym $mod+Tab exec --no-startup-id i3-msg workspace back_and_forth
+# alt-tab between current and last workspace of monitor
+exec_always --no-startup-id ~/.config/i3/bin/daemon.py
+bindsym $mod+Tab exec --no-startup-id ~/.config/i3/bin/altab.py
 
 # move qurrent window to second monitor
 bindsym $mod+Shift+m move container to output next
 bindsym $mod+m focus output next
-
+bindsym $mod+i exec --no-startup-id alacritty -e "tmux-sessionizer"

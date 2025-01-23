@@ -11,7 +11,7 @@ require 'nvim-treesitter.configs'.setup {
 
 	-- List of parsers to ignore installing (or "all")
 	-- Vim already comes bundled with them
-	ignore_install = { "c", "cpp", "lua", "markdown_inline", "markdown", "query", "vimdoc", "vim", "latex", "cuda" },
+	ignore_install = { "c", "cpp", "lua", "markdown_inline", "markdown", "query", "vimdoc", "vim", "cuda" },
 
 	---- If you need to change the installation directory of the parsers (see -> Advanced Setup)
 	-- parser_install_dir = "/some/path/to/store/parsers", -- Remember to run vim.opt.runtimepath:append("/some/path/to/store/parsers")!

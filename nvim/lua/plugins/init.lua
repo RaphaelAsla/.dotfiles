@@ -68,6 +68,20 @@ require("lazy").setup({
 	"SirVer/ultisnips",
 	"honza/vim-snippets",
 	{
+		"kawre/leetcode.nvim",
+		build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
+		dependencies = {
+			"nvim-telescope/telescope.nvim",
+			-- "ibhagwan/fzf-lua",
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+		},
+		opts = {
+			-- configuration goes here
+			lang = "python",
+		},
+	},
+	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { 'nvim-tree/nvim-web-devicons' }
 	},
@@ -82,16 +96,4 @@ require("lazy").setup({
 			vim.cmd([[colorscheme oxocarbon]])
 		end,
 	},
-	{
-		"jackMort/ChatGPT.nvim",
-		event = "VeryLazy",
-		config = function()
-			require("chatgpt").setup()
-		end,
-		dependencies = {
-			"MunifTanjim/nui.nvim",
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope.nvim"
-		}
-	}
 })

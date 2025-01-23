@@ -24,7 +24,7 @@ nnoremap <silent><esc> :noh<cr>
 map 0 ^
 
 "Expand snippet with <C-l> in insert mode
-inoremap <silent> <C-l> <C-R>UltiSnips#ExpandSnippet()<CR>
+imap <C-l> <cmd>lua vim.fn["UltiSnips#ExpandSnippet"]()<CR>
 
 "Write to sudo files
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
@@ -34,26 +34,19 @@ inoremap {<cr> {<cr>}<esc>O
 inoremap {;<cr> {<cr>};<esc>O
 
 "Open Neovim config settings with Telescope
-nnoremap <silent><leader>eff :cd ~/.config/nvim/lua \| lua require('telescope.builtin').find_files({ cwd = vim.fn.getcwd() })<cr><esc>
+nnoremap <silent><leader>eff :cd ~/.config/nvim/lua \| lua require('telescope.builtin').find_files({ cwd = vim.fn.getcwd() })<cr>
 nnoremap <silent><leader>efw :cd ~/.config/nvim/lua \| lua require('telescope.builtin').live_grep({ cwd = vim.fn.getcwd() })<cr>
 
 "Search and replace
 nnoremap <leader>s :%s/
 vnoremap <leader>s :'<, '>s/
 
-"Search and replace word under cursor
-function! ReplaceUnder() range
-  let l:pos = winsaveview()
-  let l:word = expand('<cword>')
-  let l:replacement = input('Replace ' . l:word . ' with: ')
-  let l:command = '%s/' . l:word . '/' . l:replacement . '/'
-  execute l:command
-  call winrestview(l:pos)
-endfunction
-vnoremap <leader>r :call ReplaceUnder()<CR>
-
 "Undo without moving cursor
 nnoremap U :let save_cursor = getpos('.')<CR> :undo<CR> :call setpos('.', save_cursor)<CR>
+
+"Run / Sumbit leetcode answer
+nnoremap <leader>R :Leet run <cr>
+nnoremap <leader>S :Leet submit <cr>
 
 "Explorer Netrw
 nnoremap <leader><tab> :Explore <cr>
@@ -131,7 +124,7 @@ if &filetype == 'c'
     exec "!clang -Wall % -o %<"
     exec "!./%<"
 elseif &filetype == 'cpp'
-    exec "!clang++ -std=c++20 -Wall % -o %<"
+    exec "!clang++ -std=c++23 -Wall -stdlib=libc++ % -o %<"
     exec "!./%<"
 elseif &filetype == 'cuda'
     exec "!nvcc -std=c++17 % -o %<"
