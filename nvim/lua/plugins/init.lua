@@ -68,26 +68,11 @@ require("lazy").setup({
 	"SirVer/ultisnips",
 	"honza/vim-snippets",
 	{
-		"kawre/leetcode.nvim",
-		build = ":TSUpdate html", -- if you have `nvim-treesitter` installed
-		dependencies = {
-			"nvim-telescope/telescope.nvim",
-			-- "ibhagwan/fzf-lua",
-			"nvim-lua/plenary.nvim",
-			"MunifTanjim/nui.nvim",
-		},
-		opts = {
-			-- configuration goes here
-			lang = "python",
-		},
-	},
-	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { 'nvim-tree/nvim-web-devicons' }
 	},
 	{
 		"nyoom-engineering/oxocarbon.nvim",
-		--"blazkowolf/gruber-darker.nvim",
 		lazy = false, -- make sure we load this during startup if it is your main colorscheme
 		priority = 1000, -- make sure to load this before all the other start plugins
 		config = function()
@@ -96,4 +81,25 @@ require("lazy").setup({
 			vim.cmd([[colorscheme oxocarbon]])
 		end,
 	},
+	{
+		'kristijanhusak/vim-dadbod-ui',
+		dependencies = {
+			{ 'tpope/vim-dadbod',                     lazy = true },
+			{ 'kristijanhusak/vim-dadbod-completion', ft = { 'sql', 'mysql', 'plsql' }, lazy = true }, -- Optional
+		},
+		cmd = {
+			'DBUI',
+			'DBUIToggle',
+			'DBUIAddConnection',
+			'DBUIFindBuffer',
+		},
+		init = function()
+			-- Your DBUI configuration
+			vim.g.db_ui_use_nerd_fonts = 1
+
+			vim.g.dbs = {
+				local_sqlite = 'sqlite:~/EAP/plh11/ergasia3/arxiko_sxima.db'
+			}
+		end,
+	}
 })

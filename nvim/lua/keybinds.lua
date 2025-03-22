@@ -39,7 +39,7 @@ nnoremap <silent><leader>efw :cd ~/.config/nvim/lua \| lua require('telescope.bu
 
 "Search and replace
 nnoremap <leader>s :%s/
-vnoremap <leader>s :'<, '>s/
+vnoremap <leader>s :s/
 
 "Undo without moving cursor
 nnoremap U :let save_cursor = getpos('.')<CR> :undo<CR> :call setpos('.', save_cursor)<CR>
@@ -113,13 +113,19 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 "Build the project using make (must have custom target in CMakeLists.txt)
-map <f6> :make<cr>
+map <f6> :w <bar>  make<cr>
 
 "Custom run for small programs
 map <f5> :call CompileRun()<cr>
 
 func! CompileRun()
 exec "w"
+
+if filereadable('./build.sh') && executable('./build.sh')
+        exec "!./build.sh"
+        return
+endif
+
 if &filetype == 'c'
     exec "!clang -Wall % -o %<"
     exec "!./%<"

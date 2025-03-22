@@ -74,7 +74,7 @@ vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = "#be95ff", bg = "none" })
 vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { fg = "#be95ff", bg = "none" })
 vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { fg = "#be95ff", bg = "none" })
 vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ff7eb6", bold = true })
-vim.api.nvim_set_hl(0, "CursorLine", { bg = "none" })
+--vim.api.nvim_set_hl(0, "CursorLine", { bg = "none" })
 
 
 opt.shortmess = opt.shortmess + {

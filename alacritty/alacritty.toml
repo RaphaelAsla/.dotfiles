@@ -9,6 +9,11 @@ style = {shape = "Block", blinking = "On"}
 blink_timeout = 0
 blink_interval = 750
 unfocused_hollow = false
+smooth_motion = true
+smooth_motion_factor = 0.7
+smooth_motion_spring = 0.6
+smooth_motion_max_stretch_x = 3.0
+smooth_motion_max_stretch_y = 3.0
 [mouse]
 hide_when_typing = true
 [colors]

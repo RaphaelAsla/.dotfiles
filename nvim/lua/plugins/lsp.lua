@@ -71,7 +71,7 @@ lspconfig.clangd.setup {
 }
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
-local servers = { 'texlab', 'pyright', 'jdtls', 'ts_ls', 'rust_analyzer', 'html', 'intelephense' }
+local servers = { 'glsl_analyzer', 'texlab', 'pyright', 'jdtls', 'ts_ls', 'rust_analyzer', 'html', 'intelephense' }
 for _, lsp in pairs(servers) do
 	lspconfig[lsp].setup {
 		on_attach = on_attach,
