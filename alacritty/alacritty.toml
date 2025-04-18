@@ -1,6 +1,3 @@
-
-[window]
-opacity = 0.90
 [font]
 normal = {family = "Iosevka", style = "Regular"}
 size = 13
@@ -17,10 +14,9 @@ smooth_motion_max_stretch_y = 3.0
 [mouse]
 hide_when_typing = true
 [colors]
-cursor = {text = "0x000000", cursor = "#ff7eb6"}
+cursor = {text = "#161616", cursor = "#ff7eb6"}
 [env]
 TERM = "xterm-256color"
-
 [general]
 import = [
 	"~/.config/alacritty/oxocarbon.toml"

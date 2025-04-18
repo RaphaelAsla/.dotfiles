@@ -55,7 +55,7 @@ opt.makeprg = "make -C build run"
 --transparency for any theme
 vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-vim.api.nvim_set_hl(0, "FloatBorder", { fg = "none" })
+vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#be95ff", bg = "none" }) -- a lot easier to do that defining custom borders for, just have to change it with each theme
 vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
 vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
 vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
@@ -74,8 +74,11 @@ vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = "#be95ff", bg = "none" })
 vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { fg = "#be95ff", bg = "none" })
 vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { fg = "#be95ff", bg = "none" })
 vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ff7eb6", bold = true })
---vim.api.nvim_set_hl(0, "CursorLine", { bg = "none" })
-
+vim.api.nvim_set_hl(0, "CursorLine", { bg = "none" })
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { fg = "#ee5396", bg = "#0f0f0f" })
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { fg = "#cc6600", bg = "#0f0f0f" })
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { fg = "#33b1ff", bg = "#0f0f0f" })
+vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { fg = "#3ddbd9", bg = "#0f0f0f" })
 
 opt.shortmess = opt.shortmess + {
 	A = true, -- don't give the "ATTENTION" message when an existing swap file is found.
@@ -112,4 +115,12 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 			end
 		})
 	end
+})
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+	pattern = "*.typ",
+	callback = function()
+		vim.cmd("silent !typstyle -i % " .. vim.fn.shellescape(vim.api.nvim_buf_get_name(0)))
+		vim.cmd("edit!")
+	end,
 })

@@ -33,6 +33,18 @@ local sumneko_binary = "/usr/bin/lua-language-server"
 
 local lspconfig = require("lspconfig")
 
+vim.diagnostic.config({
+	virtual_text = {
+		prefix = '●',
+		spacing = 4,
+		source = "if_many",
+	},
+	signs = true,
+	underline = true,
+	update_in_insert = false,
+	severity_sort = true,
+})
+
 lspconfig.lua_ls.setup {
 	on_attach = on_attach,
 	cmd = { sumneko_binary, "-E", sumneko_root_path .. "/main.lua" },
@@ -71,7 +83,8 @@ lspconfig.clangd.setup {
 }
 
 -- Use a loop to conveniently call 'setup' on multiple servers and
-local servers = { 'glsl_analyzer', 'texlab', 'pyright', 'jdtls', 'ts_ls', 'rust_analyzer', 'html', 'intelephense' }
+local servers = { 'tinymist', 'glsl_analyzer', 'texlab', 'pyright', 'jdtls', 'ts_ls', 'rust_analyzer', 'html',
+	'intelephense' }
 for _, lsp in pairs(servers) do
 	lspconfig[lsp].setup {
 		on_attach = on_attach,
