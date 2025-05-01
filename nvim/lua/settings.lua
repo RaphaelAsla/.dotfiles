@@ -47,38 +47,16 @@ opt.expandtab = false
 opt.backup = false
 opt.writebackup = false
 opt.swapfile = false
-opt.list = true
-opt.listchars:append({ tab = "···", trail = "·", space = "·" })
+opt.list = false
 opt.termguicolors = true
 opt.makeprg = "make -C build run"
 
---transparency for any theme
-vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#be95ff", bg = "none" }) -- a lot easier to do that defining custom borders for, just have to change it with each theme
-vim.api.nvim_set_hl(0, "NormalNC", { bg = "none" })
-vim.api.nvim_set_hl(0, "LineNr", { bg = "none" })
-vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
-vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { bg = "none", strikethrough = true })
---oxocarbon specific
-vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { bg = "none", strikethrough = true })
-vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = "#be95ff", bg = "none" })
-vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { link = "CmpItemAbbrMatch" })
-vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
-vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = "none" })
-vim.api.nvim_set_hl(0, "TelescopePromptPrefix", { bg = "none" })
-vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { bg = "none" })
-vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = "#be95ff", bg = "none" })
-vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = "#be95ff", bg = "none" })
-vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = "#be95ff", bg = "none" })
-vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { fg = "#be95ff", bg = "none" })
-vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { fg = "#be95ff", bg = "none" })
-vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ff7eb6", bold = true })
-vim.api.nvim_set_hl(0, "CursorLine", { bg = "none" })
-vim.api.nvim_set_hl(0, "DiagnosticVirtualTextError", { fg = "#ee5396", bg = "#0f0f0f" })
-vim.api.nvim_set_hl(0, "DiagnosticVirtualTextWarn", { fg = "#cc6600", bg = "#0f0f0f" })
-vim.api.nvim_set_hl(0, "DiagnosticVirtualTextInfo", { fg = "#33b1ff", bg = "#0f0f0f" })
-vim.api.nvim_set_hl(0, "DiagnosticVirtualTextHint", { fg = "#3ddbd9", bg = "#0f0f0f" })
+vim.opt.guicursor = {
+	"n-v-c:block",
+	"i-ci-ve:ver25",
+	"r-cr:hor20",
+	"o:hor50"
+}
 
 opt.shortmess = opt.shortmess + {
 	A = true, -- don't give the "ATTENTION" message when an existing swap file is found.
@@ -88,7 +66,7 @@ opt.shortmess = opt.shortmess + {
 	m = true, -- use "[+]" instead of "[Modified]"
 }
 
---Cursor stays in the same position after open/close a file
+--Cursor stays in the same position after opening/closing a file
 vim.api.nvim_command [[
     au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
     au FocusGained,BufEnter * checktime
@@ -99,7 +77,7 @@ vim.api.nvim_command [[
 	autocmd BufNewFile,BufRead *.blade.php setlocal ft=html
 ]]
 
---Formating on save
+--Format on save
 vim.api.nvim_create_augroup("LspFormatting", { clear = true })
 vim.api.nvim_create_autocmd("BufWritePre", {
 	pattern = "*",
@@ -108,19 +86,11 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 		vim.lsp.buf.format({
 			timeout_ms = 2000,
 			filter = function(client)
-				if client.name == "texlab" then --most likely very big documents that take too much time to format
+				if client.name == "texlab" then --very big latex documents that take too much time to format
 					return false
 				end
 				return true
 			end
 		})
 	end
-})
-
-vim.api.nvim_create_autocmd("BufWritePost", {
-	pattern = "*.typ",
-	callback = function()
-		vim.cmd("silent !typstyle -i % " .. vim.fn.shellescape(vim.api.nvim_buf_get_name(0)))
-		vim.cmd("edit!")
-	end,
 })

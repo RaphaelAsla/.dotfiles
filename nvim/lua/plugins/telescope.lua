@@ -10,7 +10,7 @@ telescope.setup({
 		},
 	},
 
-	-- will open netrw view in the directory of selected file
+	-- Open netrw view in the directory of selected file
 	pickers = {
 		find_files = {
 			mappings = {

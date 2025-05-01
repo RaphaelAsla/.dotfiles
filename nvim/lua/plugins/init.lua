@@ -20,9 +20,20 @@ require("lazy").setup({
 		version = '1.*',
 		opts = {},
 	},
+	"nvim-telescope/telescope.nvim",
+	"alvan/vim-closetag",
+	"tpope/vim-fugitive",
+	"dstein64/vim-startuptime",
+	"airblade/vim-rooter",
+	"nvim-treesitter/nvim-treesitter",
+	"tree-sitter/tree-sitter",
+	"SirVer/ultisnips",
+	"honza/vim-snippets",
 	{
-		"hrsh7th/nvim-cmp",
+		"neovim/nvim-lspconfig",
 		dependencies = {
+			"nvim-lua/lsp-status.nvim",
+			"hrsh7th/nvim-cmp",
 			"quangnguyen30192/cmp-nvim-ultisnips",
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-cmdline",
@@ -36,12 +47,12 @@ require("lazy").setup({
 		dependencies = { 'nvim-tree/nvim-web-devicons' }
 	},
 	{
-		"nyoom-engineering/oxocarbon.nvim",
+		"vague2k/vague.nvim",
 		lazy = false,
 		priority = 1000,
 		config = function()
 			vim.opt.background = "dark"
-			vim.cmd([[colorscheme oxocarbon]])
+			vim.cmd([[colorscheme vague]])
 		end,
 	},
 	{
@@ -63,16 +74,5 @@ require("lazy").setup({
 				local_sqlite = 'sqlite:~/EAP/plh11/ergasia3/arxiko_sxima.db'
 			}
 		end,
-	},
-	"nvim-telescope/telescope.nvim",
-	"alvan/vim-closetag",
-	"neovim/nvim-lspconfig",
-	"nvim-lua/lsp-status.nvim",
-	"tpope/vim-fugitive",
-	"dstein64/vim-startuptime",
-	"airblade/vim-rooter",
-	"nvim-treesitter/nvim-treesitter",
-	"tree-sitter/tree-sitter",
-	"SirVer/ultisnips",
-	"honza/vim-snippets",
+	}
 })

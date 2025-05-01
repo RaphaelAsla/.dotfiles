@@ -29,6 +29,10 @@ local kind_icons = {
 }
 
 cmp.setup({
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
+	},
 	preselect = cmp.PreselectMode.None,
 	mapping = {
 		['<C-k>'] = cmp.mapping.scroll_docs(-4),
@@ -41,12 +45,9 @@ cmp.setup({
 			select = false
 		}),
 	},
-
 	formatting = {
 		format = function(entry, vim_item)
-			-- Kind icons
-			vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-			-- Source
+			vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
 			vim_item.menu = ({
 				buffer = "[Buffer]",
 				nvim_lsp = "[LSP]",
@@ -61,7 +62,6 @@ cmp.setup({
 	}
 })
 
--- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline('/', {
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = {
@@ -69,7 +69,6 @@ cmp.setup.cmdline('/', {
 	}
 })
 
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
 	mapping = cmp.mapping.preset.cmdline(),
 	sources = cmp.config.sources({

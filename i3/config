@@ -219,4 +219,4 @@ bindsym $mod+Tab exec --no-startup-id ~/.config/i3/bin/altab.py
 # move qurrent window to second monitor
 bindsym $mod+Shift+m move container to output next
 bindsym $mod+m focus output next
-bindsym $mod+i exec --no-startup-id kitty -e "tmux-sessionizer"
+bindsym $mod+Shift+i exec --no-startup-id kitty -e "tmux-sessionizer"
