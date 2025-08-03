@@ -51,15 +51,25 @@ opt.list = false
 opt.termguicolors = true
 opt.makeprg = "make -C build run"
 
-vim.opt.guicursor = {
-	"n-v-c:block",
-	"i-ci-ve:ver25",
-	"r-cr:hor20",
-	"o:hor50"
-}
+vim.api.nvim_set_hl(0, "FloatBorder", { fg = "#bb9dbd", bg = "none" })
+vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+vim.api.nvim_set_hl(0, "CmpItemAbbrDeprecated", { bg = "none", strikethrough = true })
+vim.api.nvim_set_hl(0, "CmpItemAbbrMatch", { fg = "#bb9dbd", bg = "none" })
+vim.api.nvim_set_hl(0, "CmpItemAbbrMatchFuzzy", { link = "CmpItemAbbrMatch" })
+vim.api.nvim_set_hl(0, "TelescopeNormal", { bg = "none" })
+vim.api.nvim_set_hl(0, "TelescopePromptNormal", { bg = "none" })
+vim.api.nvim_set_hl(0, "TelescopePromptPrefix", { bg = "none" })
+vim.api.nvim_set_hl(0, "TelescopeResultsTitle", { bg = "none" })
+vim.api.nvim_set_hl(0, "TelescopeMatching", { fg = "#bb9dbd", bg = "none" })
+vim.api.nvim_set_hl(0, "TelescopeBorder", { fg = "#bb9dbd", bg = "none" })
+vim.api.nvim_set_hl(0, "TelescopePromptBorder", { fg = "#bb9dbd", bg = "none" })
+vim.api.nvim_set_hl(0, "TelescopePreviewBorder", { fg = "#bb9dbd", bg = "none" })
+vim.api.nvim_set_hl(0, "TelescopeResultsBorder", { fg = "#bb9dbd", bg = "none" })
+vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#bb9dbd", bold = true })
+vim.api.nvim_set_hl(0, "CursorLine", { bg = "none" })
 
 opt.shortmess = opt.shortmess + {
-	A = true, -- don't give the "ATTENTION" message when an existing swap file is found.
+	A = true, -- don't give the "ATTENTION message when an existing swap file is found.
 	I = true, -- don't give the intro message when starting Vim |:intro|.
 	W = true, -- don't give "written" or "[w]" when writing a file
 	c = true, -- don't give |ins-completion-menu| messages
@@ -84,13 +94,12 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 	group = "LspFormatting",
 	callback = function()
 		vim.lsp.buf.format({
-			timeout_ms = 2000,
-			filter = function(client)
-				if client.name == "texlab" then --very big latex documents that take too much time to format
-					return false
-				end
-				return true
-			end
+			timeout_ms = 2000
 		})
 	end
 })
+
+vim.api.nvim_create_user_command("ClangTidyFix", function()
+	local file = vim.fn.expand("%")
+	vim.cmd("!clang-tidy " .. file .. " --fix \"--header-filter=.*\" --quiet -- -std=c++20")
+end, {})

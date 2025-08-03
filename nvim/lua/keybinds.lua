@@ -23,9 +23,6 @@ nnoremap <silent><esc> :noh<cr>
 "Go to start  of line
 map 0 ^
 
-"Expand snippet with <C-l> in insert mode
-imap <C-l> <cmd>lua vim.fn["UltiSnips#ExpandSnippet"]()<CR>
-
 "Write to sudo files
 command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
@@ -34,8 +31,8 @@ inoremap {<cr> {<cr>}<esc>O
 inoremap {;<cr> {<cr>};<esc>O
 
 "Open Neovim config settings with Telescope
-nnoremap <silent><leader>eff :cd ~/.config/nvim/lua \| lua require('telescope.builtin').find_files({ cwd = vim.fn.getcwd() })<cr>
-nnoremap <silent><leader>efw :cd ~/.config/nvim/lua \| lua require('telescope.builtin').live_grep({ cwd = vim.fn.getcwd() })<cr>
+nnoremap <silent><leader>ef :cd ~/.config/nvim/lua \| lua require('telescope.builtin').find_files({ cwd = vim.fn.getcwd() })<cr>
+nnoremap <silent><leader>ew :cd ~/.config/nvim/lua \| lua require('telescope.builtin').live_grep({ cwd = vim.fn.getcwd() })<cr>
 
 "Search and replace
 nnoremap <leader>s :%s/
@@ -51,11 +48,20 @@ nnoremap <leader>S :Leet submit <cr>
 "Explorer Netrw
 nnoremap <leader><tab> :Explore <cr>
 
+"Helper function to write current buffer and open a new file
+function! WriteEdit(file)
+  write
+  bd
+  execute 'edit' a:file
+endfunction
 "Tabs
-nnoremap <leader>tn :tabnew<cr>
+command! -nargs=1 WE call WriteEdit(<f-args>)
+nnoremap <leader>tn :call WriteEdit(input('Open file: '))<cr>
 nnoremap <leader>to :tabonly<cr>
 nnoremap <leader>tc :tabclose<cr>
 nnoremap <leader>tm :tabmove
+"Opens a new tab with the current buffer's path
+map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
 "Splits (vertical and horizontal)
 nnoremap <leader>vs :vsp <c-r>=expand("%:p:h")<cr>/
@@ -76,11 +82,14 @@ nnoremap n nzz
 nnoremap N Nzz
 
 "Telescope stuff
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope git_files<cr>
-nnoremap <leader>fw <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>f <cmd>Telescope find_files<cr>
+nnoremap <leader>g <cmd>Telescope git_files<cr>
+nnoremap <leader>w <cmd>Telescope live_grep<cr>
+nnoremap <leader>b <cmd>Telescope buffers<cr>
+nnoremap <leader>h <cmd>Telescope help_tags<cr>
+
+"Switch to source / header file
+nnoremap <leader>` <cmd>ClangdSwitchSourceHeader<cr>
 
 "Go to tab by number
 nnoremap <leader>1 1gt
@@ -106,8 +115,9 @@ vnoremap $$ <esc>`>a$<esc>`<i$<esc>
 vnoremap J :m '>+1<cr>gv=gv
 vnoremap K :m '<-2<cr>gv=gv
 
-"Opens a new tab with the current buffer's path
-map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
+"Append to end of lie in visual block mode
+vnoremap A $A
+
 
 "Get current directory
 nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
@@ -145,7 +155,7 @@ elseif &filetype == 'sh'
 elseif &filetype == 'python'
     exec "!python3 %"
 elseif &filetype == 'html'
-    exec "!google-chrome-stable % &"
+    exec "!$BROWSER % &"
 elseif &filetype == 'go'
     exec "!go build %<"
     exec "!go run %"
@@ -158,6 +168,8 @@ elseif &filetype == 'asm'
 	exec "!ld %<.o -o %<"
 	exec "!rm -rf %<.o"
 	exec "!./%<"
+elseif &filetype == 'typst'
+	exec "!typst compile %"
 endif
 endfunc
 ]], {})

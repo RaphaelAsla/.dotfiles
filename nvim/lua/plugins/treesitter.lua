@@ -3,7 +3,7 @@ require 'nvim-treesitter.configs'.setup {
 	auto_install = true,
 	ignore_install = { "c", "cpp", "lua", "markdown_inline", "markdown", "query", "vimdoc", "vim", "cuda" },
 	indent = {
-		enable = true,
+		enable = false,
 	},
 	highlight = {
 		enable = true,

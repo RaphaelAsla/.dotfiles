@@ -198,7 +198,7 @@ exec_always --no-startup-id nitrogen --restore
 exec_always --no-startup-id xset r rate 250 40
 
 # no border and title
-default_border none
+for_window [class="^.*"] border pixel 0
 
 # title to the center of the window
 title_align center
@@ -211,6 +211,7 @@ bindsym $mod+p exec rofi -show drun -show-icons
 
 # screenshot
 bindsym Print exec flameshot gui
+bindsym Scroll_Lock exec flameshot gui --raw | convert -resize 400% png:- png:- | tesseract -l eng+ell stdin stdout | xclip -selection clipboard
 
 # alt-tab between current and last workspace of monitor
 exec_always --no-startup-id ~/.config/i3/bin/daemon.py

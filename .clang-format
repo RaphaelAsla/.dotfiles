@@ -11,15 +11,15 @@ AllowShortFunctionsOnASingleLine: Empty
 AllowShortIfStatementsOnASingleLine: 'false'
 AlignConsecutiveMacros: true
 AlignConsecutiveAssignments: true
-AlignConsecutiveDeclarations: true
+AlignConsecutiveDeclarations: false
 RequiresClausePosition: 'OwnLine'
 IndentRequiresClause: 'false'
 BinPackArguments: 'true'
 BinPackParameters: 'true'
 BreakBeforeBraces: Attach
 BreakConstructorInitializers: 'BeforeComma'
-ColumnLimit: '200'
-CompactNamespaces: 'false'
+ColumnLimit: 200
+CompactNamespaces: 'true'
 FixNamespaceComments: 'true'
 IncludeBlocks: Regroup
 IndentWidth: '4'
@@ -31,3 +31,4 @@ SortIncludes: 'true'
 SortUsingDeclarations: 'true'
 DerivePointerAlignment: false
 PointerAlignment: Left
+AllowShortLambdasOnASingleLine: false

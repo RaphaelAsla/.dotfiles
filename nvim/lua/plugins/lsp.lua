@@ -67,6 +67,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = false
 
 lspconfig.clangd.setup {
+	cmd = { "clangd", "--clang-tidy" },
 	on_attach = on_attach,
 	capabilities = capabilities,
 	flags = {
