@@ -2,7 +2,6 @@ return {
 	-- Core LSP and completion
 	{
 		"neovim/nvim-lspconfig",
-		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			"nvim-lua/lsp-status.nvim",
 			"hrsh7th/nvim-cmp",
@@ -131,4 +130,5 @@ return {
 			require("config.copilot").setup()
 		end,
 	},
+
 }

@@ -1,201 +1,175 @@
-local keymap = vim.keymap.set
+vim.api.nvim_exec2([[
+"Exit inssert mode
+inoremap jj <esc>
 
--- Exit insert mode
-keymap("i", "jj", "<Esc>", { desc = "Exit insert mode" })
+"Indent line left or right and re-select the line
+vnoremap < <gv
+vnoremap > >gv
 
--- Indent line left or right and re-select the line
-keymap("v", "<", "<gv", { desc = "Indent left and reselect" })
-keymap("v", ">", ">gv", { desc = "Indent right and reselect" })
+"Paste in visual mode without copying underlying text
+xnoremap <expr> p 'pgv"'.v:register.'y`>'
+xnoremap <expr> P 'Pgv"'.v:register.'y`>'
 
--- Paste in visual mode without copying underlying text
-keymap("x", "p", 'pgv"' .. vim.v.register .. 'y`>', { expr = true, desc = "Paste without yanking" })
-keymap("x", "P", 'Pgv"' .. vim.v.register .. 'y`>', { expr = true, desc = "Paste before without yanking" })
+"Delete without copying
+nnoremap d "_d
+vnoremap d "_d
 
--- Delete without copying
-keymap({ "n", "v" }, "d", '"_d', { desc = "Delete without yanking" })
+"Delete with copying
+xnoremap D d
 
--- Delete with copying (use D in visual mode)
-keymap("x", "D", "d", { desc = "Delete with yanking" })
+"Clear highlighted text
+nnoremap <silent><esc> :noh<cr>
 
--- Clear highlighted text
-keymap("n", "<Esc>", ":noh<CR>", { silent = true, desc = "Clear search highlights" })
+"Go to start  of line
+map 0 ^
 
--- Go to start of line
-keymap({ "n", "v" }, "0", "^", { desc = "Go to first non-blank character" })
+"Write to sudo files
+command W :execute ':silent w !sudo tee % > /dev/null' | :edit!
 
--- Open close brackets
-keymap("i", "{<CR>", "{<CR>}<Esc>O", { desc = "Auto-close braces with newline" })
-keymap("i", "{;<CR>", "{<CR>};<Esc>O", { desc = "Auto-close braces with semicolon" })
+"Open close brackets
+inoremap {<cr> {<cr>}<esc>O
+inoremap {;<cr> {<cr>};<esc>O
 
--- Open Neovim config settings with Telescope
-keymap("n", "<leader>ef", function()
-	vim.cmd("cd ~/.config/nvim/lua")
-	require('telescope.builtin').find_files({ cwd = vim.fn.getcwd() })
-end, { silent = true, desc = "Find config files" })
+"Open Neovim config settings with Telescope
+nnoremap <silent><leader>ef :cd ~/.config/nvim/lua \| lua require('telescope.builtin').find_files({ cwd = vim.fn.getcwd() })<cr>
+nnoremap <silent><leader>ew :cd ~/.config/nvim/lua \| lua require('telescope.builtin').live_grep({ cwd = vim.fn.getcwd() })<cr>
 
-keymap("n", "<leader>ew", function()
-	vim.cmd("cd ~/.config/nvim/lua")
-	require('telescope.builtin').live_grep({ cwd = vim.fn.getcwd() })
-end, { silent = true, desc = "Search in config files" })
+"Search and replace
+nnoremap <leader>s :%s/
+vnoremap <leader>s :s/
 
--- Search and replace
-keymap("n", "<leader>s", ":%s/", { desc = "Search and replace in file" })
-keymap("v", "<leader>s", ":s/", { desc = "Search and replace in selection" })
+"Undo without moving cursor
+nnoremap U :let save_cursor = getpos('.')<CR> :undo<CR> :call setpos('.', save_cursor)<CR>
 
--- Undo without moving cursor
-keymap("n", "U", function()
-	local cursor_pos = vim.api.nvim_win_get_cursor(0)
-	vim.cmd("undo")
-	vim.api.nvim_win_set_cursor(0, cursor_pos)
-end, { desc = "Undo without moving cursor" })
+"Run / Sumbit leetcode answer
+nnoremap <leader>R :Leet run <cr>
+nnoremap <leader>S :Leet submit <cr>
 
--- LeetCode commands
-keymap("n", "<leader>R", ":Leet run<CR>", { desc = "Run LeetCode solution" })
-keymap("n", "<leader>S", ":Leet submit<CR>", { desc = "Submit LeetCode solution" })
+"Explorer Netrw
+nnoremap <leader><tab> :Explore <cr>
 
--- File explorer
-keymap("n", "<leader><Tab>", ":Explore<CR>", { desc = "Open file explorer" })
+"Helper function to write current buffer and open a new file
+function! WriteEdit(file)
+  write
+  bd
+  execute 'edit' a:file
+endfunction
+"Tabs
+command! -nargs=1 WE call WriteEdit(<f-args>)
+nnoremap <leader>tn :call WriteEdit(input('Open file: '))<cr>
+nnoremap <leader>to :tabonly<cr>
+nnoremap <leader>tc :tabclose<cr>
+nnoremap <leader>tm :tabmove
+"Opens a new tab with the current buffer's path
+map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 
--- Helper function for WriteEdit
-local function write_edit()
-	local file = vim.fn.input("Open file: ")
-	if file ~= "" then
-		vim.cmd("write")
-		vim.cmd("bdelete")
-		vim.cmd("edit " .. file)
-	end
-end
+"Splits (vertical and horizontal)
+nnoremap <leader>vs :vsp <c-r>=expand("%:p:h")<cr>/
+nnoremap <leader>hs :sp <c-r>=expand("%:p:h")<cr>/
 
--- Tab management
-keymap("n", "<leader>tn", write_edit, { desc = "Write current and open new file" })
-keymap("n", "<leader>to", ":tabonly<CR>", { desc = "Close all other tabs" })
-keymap("n", "<leader>tc", ":tabclose<CR>", { desc = "Close current tab" })
-keymap("n", "<leader>tm", ":tabmove ", { desc = "Move tab" })
-keymap("n", "<leader>te", ":tabedit <C-r>=expand('%:p:h')<CR>/", { desc = "New tab in current directory" })
+"Move between splits
+nnoremap <silent> <c-w>k :wincmd k<CR>
+nnoremap <silent> <c-w>j :wincmd j<CR>
+nnoremap <silent> <c-w>h :wincmd h<CR>
+nnoremap <silent> <c-w>l :wincmd l<CR>
 
--- Splits
-keymap("n", "<leader>vs", ":vsp <C-r>=expand('%:p:h')<CR>/", { desc = "Vertical split in current directory" })
-keymap("n", "<leader>hs", ":sp <C-r>=expand('%:p:h')<CR>/", { desc = "Horizontal split in current directory" })
+"Place cursor in middle when moving half a page
+nnoremap <c-d> <c-d>zz
+nnoremap <c-u> <c-u>zz
 
--- Move between splits
-keymap("n", "<C-w>k", "<C-w>k", { silent = true, desc = "Move to split above" })
-keymap("n", "<C-w>j", "<C-w>j", { silent = true, desc = "Move to split below" })
-keymap("n", "<C-w>h", "<C-w>h", { silent = true, desc = "Move to split left" })
-keymap("n", "<C-w>l", "<C-w>l", { silent = true, desc = "Move to split right" })
+"Place cursor in middle when moving between matches
+nnoremap n nzz
+nnoremap N Nzz
 
--- Center cursor when moving half page
-keymap("n", "<C-d>", "<C-d>zz", { desc = "Move down half page and center" })
-keymap("n", "<C-u>", "<C-u>zz", { desc = "Move up half page and center" })
+"Telescope stuff
+nnoremap <leader>f <cmd>Telescope find_files<cr>
+nnoremap <leader>g <cmd>Telescope git_files<cr>
+nnoremap <leader>w <cmd>Telescope live_grep<cr>
+nnoremap <leader>b <cmd>Telescope buffers<cr>
+nnoremap <leader>h <cmd>Telescope help_tags<cr>
 
--- Center cursor when moving between search matches
-keymap("n", "n", "nzz", { desc = "Next search result and center" })
-keymap("n", "N", "Nzz", { desc = "Previous search result and center" })
+"Switch to source / header file
+nnoremap <leader>` <cmd>ClangdSwitchSourceHeader<cr>
 
--- Telescope
-keymap("n", "<leader>f", "<cmd>Telescope find_files<CR>", { desc = "Find files" })
-keymap("n", "<leader>g", "<cmd>Telescope git_files<CR>", { desc = "Git files" })
-keymap("n", "<leader>w", "<cmd>Telescope live_grep<CR>", { desc = "Live grep" })
-keymap("n", "<leader>b", "<cmd>Telescope buffers<CR>", { desc = "Buffers" })
-keymap("n", "<leader>h", "<cmd>Telescope help_tags<CR>", { desc = "Help tags" })
+"Go to tab by number
+nnoremap <leader>1 1gt
+nnoremap <leader>2 2gt
+nnoremap <leader>3 3gt
+nnoremap <leader>4 4gt
+nnoremap <leader>5 5gt
+nnoremap <leader>6 6gt
+nnoremap <leader>7 7gt
+nnoremap <leader>8 8gt
+nnoremap <leader>9 9gt
+nnoremap <leader>0 :tablast<cr>
 
--- Switch between source and header files
-keymap("n", "<leader>`", "<cmd>ClangdSwitchSourceHeader<CR>", { desc = "Switch source/header" })
+"Surround words in symbols / brackets / quotes e.t.c.
+vnoremap $1 <esc>`>a)<esc>`<i(<esc>
+vnoremap $2 <esc>`>a]<esc>`<i[<esc>
+vnoremap $3 <esc>`>a}<esc>`<i{<esc>
+vnoremap $4 <esc>`>a"<esc>`<i"<esc>
+vnoremap $5 <esc>`>a'<esc>`<i'<esc>
+vnoremap $$ <esc>`>a$<esc>`<i$<esc>
 
--- Go to tab by number
-for i = 1, 9 do
-	keymap("n", "<leader>" .. i, i .. "gt", { desc = "Go to tab " .. i })
-end
-keymap("n", "<leader>0", ":tablast<CR>", { desc = "Go to last tab" })
+"Move line up and down
+vnoremap J :m '>+1<cr>gv=gv
+vnoremap K :m '<-2<cr>gv=gv
 
--- Surround words in symbols/brackets/quotes
-keymap("v", "$1", "<Esc>`>a)<Esc>`<i(<Esc>", { desc = "Surround with ()" })
-keymap("v", "$2", "<Esc>`>a]<Esc>`<i[<Esc>", { desc = "Surround with []" })
-keymap("v", "$3", "<Esc>`>a}<Esc>`<i{<Esc>", { desc = "Surround with {}" })
-keymap("v", '$4', '<Esc>`>a"<Esc>`<i"<Esc>', { desc = 'Surround with ""' })
-keymap("v", "$5", "<Esc>`>a'<Esc>`<i'<Esc>", { desc = "Surround with ''" })
-keymap("v", "$$", "<Esc>`>a$<Esc>`<i$<Esc>", { desc = "Surround with $$" })
+"Append to end of lie in visual block mode
+vnoremap A $A
 
--- Move lines up and down
-keymap("v", "J", ":m '>+1<CR>gv=gv", { desc = "Move selection down" })
-keymap("v", "K", ":m '<-2<CR>gv=gv", { desc = "Move selection up" })
 
--- Append to end of line in visual block mode
-keymap("v", "A", "$A", { desc = "Append at end of selection" })
+"Get current directory
+nnoremap <leader>cd :cd %:p:h<cr>:pwd<cr>
 
--- Get current directory
-keymap("n", "<leader>cd", ":cd %:p:h<CR>:pwd<CR>", { desc = "Change to current file directory" })
+"Build the project using make (must have custom target in CMakeLists.txt)
+map <f6> :w <bar>  make<cr>
 
--- Build commands
-keymap("n", "<F6>", ":w<Bar>make<CR>", { desc = "Save and build project" })
-keymap("n", "<F5>", function()
-	-- Custom compile and run function converted to Lua
-	vim.cmd("write")
+"Custom run for small programs
+map <f5> :call CompileRun()<cr>
 
-	-- Check for build script first
-	if vim.fn.filereadable("./build.sh") == 1 and vim.fn.executable("./build.sh") == 1 then
-		vim.cmd("!./build.sh")
-		return
-	end
+func! CompileRun()
+exec "w"
 
-	local filetype = vim.bo.filetype
-	local filename = vim.fn.expand("%")
-	local filename_no_ext = vim.fn.expand("%<")
+if filereadable('./build.sh') && executable('./build.sh')
+        exec "!./build.sh"
+        return
+endif
 
-	local compile_commands = {
-		c = function()
-			vim.cmd("!clang -Wall " .. filename .. " -o " .. filename_no_ext)
-			vim.cmd("!./" .. filename_no_ext)
-		end,
-		cpp = function()
-			vim.cmd("!clang++ -std=c++23 -Wall -stdlib=libc++ " .. filename .. " -o " .. filename_no_ext)
-			vim.cmd("!./" .. filename_no_ext)
-		end,
-		cuda = function()
-			vim.cmd("!nvcc -std=c++17 " .. filename .. " -o " .. filename_no_ext)
-			vim.cmd("!./" .. filename_no_ext)
-		end,
-		rust = function()
-			vim.cmd("!cargo run")
-		end,
-		java = function()
-			vim.cmd("!javac " .. filename)
-			vim.cmd("!java " .. filename_no_ext)
-		end,
-		sh = function()
-			vim.cmd("!bash " .. filename)
-		end,
-		python = function()
-			vim.cmd("!python3 " .. filename)
-		end,
-		html = function()
-			vim.cmd("!$BROWSER " .. filename .. " &")
-		end,
-		go = function()
-			vim.cmd("!go build " .. filename_no_ext)
-			vim.cmd("!go run " .. filename)
-		end,
-		matlab = function()
-			vim.cmd("!octave " .. filename)
-		end,
-		javascript = function()
-			vim.cmd("!node " .. filename)
-		end,
-		asm = function()
-			vim.cmd("!nasm -f elf64 " .. filename)
-			vim.cmd("!ld " .. filename_no_ext .. ".o -o " .. filename_no_ext)
-			vim.cmd("!rm -rf " .. filename_no_ext .. ".o")
-			vim.cmd("!./" .. filename_no_ext)
-		end,
-		typst = function()
-			vim.cmd("!typst compile " .. filename)
-		end,
-	}
-
-	local command = compile_commands[filetype]
-	if command then
-		command()
-	else
-		print("No compile command defined for filetype: " .. filetype)
-	end
-end, { desc = "Compile and run current file" })
-
+if &filetype == 'c'
+    exec "!clang -Wall % -o %<"
+    exec "!./%<"
+elseif &filetype == 'cpp'
+    exec "!clang++ -std=c++23 -Wall -stdlib=libc++ % -o %<"
+    exec "!./%<"
+elseif &filetype == 'cuda'
+    exec "!nvcc -std=c++17 % -o %<"
+    exec "!./%<"
+elseif &filetype == 'rust'
+    exec "!cargo run"
+elseif &filetype == 'java'
+    exec "!javac %"
+    exec "!java %"
+elseif &filetype == 'sh'
+    exec "!bash %"
+elseif &filetype == 'python'
+    exec "!python3 %"
+elseif &filetype == 'html'
+    exec "!$BROWSER % &"
+elseif &filetype == 'go'
+    exec "!go build %<"
+    exec "!go run %"
+elseif &filetype == 'matlab'
+    exec "!octave %"
+elseif &filetype == 'javascript'
+	exec "!node %"
+elseif &filetype == 'asm'
+	exec "!nasm -f elf64 %"
+	exec "!ld %<.o -o %<"
+	exec "!rm -rf %<.o"
+	exec "!./%<"
+elseif &filetype == 'typst'
+	exec "!typst compile %"
+endif
+endfunc
+]], {})
