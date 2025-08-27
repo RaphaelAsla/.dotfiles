@@ -84,7 +84,7 @@ return {
 	-- Auto close HTML/XML tags
 	{
 		"alvan/vim-closetag",
-		ft = { "html", "xml", "jsx", "tsx", "php" },
+		ft = { "html", "xml", "jsx", "tsx", "php", "js" },
 	},
 
 	-- Startup time profiling

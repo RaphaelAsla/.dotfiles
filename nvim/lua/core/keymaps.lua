@@ -140,7 +140,7 @@ if &filetype == 'c'
     exec "!clang -Wall % -o %<"
     exec "!./%<"
 elseif &filetype == 'cpp'
-    exec "!clang++ -std=c++23 -Wall -stdlib=libc++ % -o %<"
+    exec "!clang++ -std=c++23 -lfmt -Wextra -Wconversion -Wall -stdlib=libc++ % -o %<"
     exec "!./%<"
 elseif &filetype == 'cuda'
     exec "!nvcc -std=c++17 % -o %<"

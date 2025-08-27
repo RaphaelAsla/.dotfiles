@@ -40,6 +40,15 @@ end
 
 -- Setup function
 function M.setup()
+	-- Configure LSP hover with borders
+	local hover = vim.lsp.buf.hover
+	---@diagnostic disable-next-line: duplicate-set-field
+	vim.lsp.buf.hover = function()
+		return hover({
+			border = "rounded",
+		})
+	end
+
 	-- Diagnostic configuration
 	vim.diagnostic.config({
 		float = { border = "rounded" },
@@ -116,7 +125,8 @@ function M.setup()
 		'ts_ls',
 		'rust_analyzer',
 		'html',
-		'intelephense'
+		'intelephense',
+		'gopls'
 	}
 
 	for _, server in pairs(servers) do
